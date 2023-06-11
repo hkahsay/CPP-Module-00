@@ -5,13 +5,13 @@ CC = g++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 # Source files
-SRCS = megaphone.cpp 
+SRCS = PhoneBook.cpp 
 
 # Object files 
 OBJS = $(SRCS:.cpp=.o)
 
 # Executable name OR target
-NAME = megaphone
+NAME = PhoneBook
 
 RM = rm -f
 
@@ -27,8 +27,6 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $^ -o $@
 
 # Rule to clean the compiled files
-# clean:
-# 	 $(OBJS) $(NAME)
 clean:
 	$(RM) $(OBJS) $(NAME)
 
