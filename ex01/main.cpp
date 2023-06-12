@@ -1,5 +1,5 @@
-// #include"PhoneBook.hpp"
-#include"Contact.hpp"
+#include"PhoneBook.hpp"
+// #include"Contact.hpp"
 
 #include<iostream>
 #include <string>
@@ -8,8 +8,8 @@
 
 int main()
 {
-	Contact instance;
-	// PhoneBook instance2;
+	// Contact instance;
+	PhoneBook instance2;
 
 	std::string input;
 
@@ -18,16 +18,15 @@ int main()
 	std:: getline(std:: cin, input);
 	std:: cout<<"thank you ";
 
-	instance.set_FirstName("Hermon");
-	std:: cout<<"FirstName: "<< instance.get_FirstName();
+	while (true)
+	{
+		if (input == "ADD")
+		{
+			instance2.AddContact(input);// call AddContact function from phonebook class
+		}
+	}
 	return(0);
 }
-	// while (true)
-	// {
-		// if (input == "ADD")
-		// {
-		// 	instance.AddContact(FirstName, LastName, NickName, PhoneNumber, DarkestSecret);
-		// }
 		// else if (input == "SEARCH")
 		// {
 		// 	// instance.SearchContact();
@@ -36,7 +35,6 @@ int main()
 		// {
 		// 	std::cout<<"Invalid command"<<std::endl;
 		// }
-	// }
 
 // int main() {
 //     std::string line;

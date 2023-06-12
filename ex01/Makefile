@@ -5,7 +5,7 @@ CC = g++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 # Source files
-SRCS = Contact.cpp main.cpp  
+SRCS = Contact.cpp PhoneBook.cpp main.cpp  
 
 # Object files 
 OBJS = $(SRCS:.cpp=.o)
