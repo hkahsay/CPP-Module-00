@@ -5,13 +5,13 @@ CC = g++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 # Source files
-SRCS = PhoneBook.cpp 
+SRCS = Contact.cpp main.cpp  
 
 # Object files 
 OBJS = $(SRCS:.cpp=.o)
 
 # Executable name OR target
-NAME = PhoneBook
+NAME = cheesy
 
 RM = rm -f
 
