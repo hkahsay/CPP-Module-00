@@ -13,16 +13,28 @@ int main()
 
 	std::string input;
 
-	std:: cout <<"Welcome to my cheesy awesome phonebook!"<<std:: endl;
-	std:: cout<<"please enter any valid command ";
-	std:: getline(std:: cin, input);
-	std:: cout<<"thank you ";
+	std:: cout<<std:: endl;
+	std:: cout <<"Welcome to my cheesy awesome phonebook!"<<std:: endl <<std:: endl;
+	// std:: getline(std:: cin, input);
+	// std:: cout<<"thank you ";
 
 	while (true)
 	{
+		std:: cout<<"please enter a valid command:\n";
+		std:: getline(std:: cin, input);
 		if (input == "ADD")
 		{
 			instance2.AddContact(input);// call AddContact function from phonebook class
+			input.clear();
+		}
+		if (input == "SEARCH")
+		{
+			instance2.SearchContact();// call SearchContact function from phonebook class
+		}
+		if (input == "EXIT")
+		{
+			std::cout <<"Comeback again"<<std:: endl;
+			exit(0);
 		}
 	}
 	return(0);
