@@ -20,11 +20,11 @@ int main()
 
 	while (true)
 	{
-		std:: cout<<"please enter a valid command:\n";
+		std:: cout<<"please enter a valid command > ";
 		std:: getline(std:: cin, input);
 		if (input == "ADD")
 		{
-			instance2.AddContact(input);// call AddContact function from phonebook class
+			instance2.AddContact();// input call AddContact function from phonebook class
 			input.clear();
 		}
 		if (input == "SEARCH")
