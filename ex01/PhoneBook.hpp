@@ -15,8 +15,11 @@ class PhoneBook {
 		PhoneBook();
 		~PhoneBook();
 		void AddContact(std::string input);
-		void SearchContact(void);//std::string input
-		void PrintContact(void);//std::string input
-		void Exit(std::string input);
+		void SearchContact();//std::string input
+		void PrintContact();//std::string input
+		// void Exit(std::string input);
+		void PhoneBook:: PrintFullContactInfo(void)//std::string input
+
+
 };
 #endif
