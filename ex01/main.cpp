@@ -27,26 +27,20 @@ int main()
 			instance2.AddContact();// input call AddContact function from phonebook class
 			input.clear();
 		}
-		if (input == "SEARCH")
+		else if (input == "SEARCH")
 		{
 			instance2.SearchContact();// call SearchContact function from phonebook class
 		}
-		if (input == "EXIT")
+		else if (input == "EXIT")
 		{
 			std::cout <<"Comeback again"<<std:: endl;
-			exit(0);
+			// exit(0);
+			return(0);
 		}
+		
 	}
 	return(0);
 }
-		// else if (input == "SEARCH")
-		// {
-		// 	// instance.SearchContact();
-		// }
-		// else
-		// {
-		// 	std::cout<<"Invalid command"<<std::endl;
-		// }
 
 // int main() {
 //     std::string line;

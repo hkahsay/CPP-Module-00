@@ -15,8 +15,12 @@ void PhoneBook:: AddContact() {
 	if (_index >= 8)
 	{
 		std:: cout<< "phonebook is full it will replace the older contact"<< std:: endl;
+		_temp = _index;
+		std::cout<<"value of temp " << _temp << std:: endl;
+		_index.clear();
 		_index = 0; 
 		_Contacts[_index % 8] = NewContact;
+		_temp++;
 	}
 	else
 	{
@@ -33,7 +37,8 @@ void PhoneBook:: AddContact() {
 		std:: cout<< "Enter first name: ";
     	while (FirstName.empty()) {
        		std::getline(std::cin, FirstName);
-			std :: cout<<"First name canot be empty ";
+			if (FirstName.empty())
+				std :: cout<<"First name canot be empty ";
    		 }
 			NewContact.set_FirstName(FirstName); // Set the first name
 			std::cout << std::endl;
@@ -42,7 +47,8 @@ void PhoneBook:: AddContact() {
 		std:: cout << "Enter last name: ";
 		while (LastName.empty()) {
 			std:: getline(std::cin, LastName);
-			std :: cout<<"Last name canot be empty ";
+			if (LastName.empty())
+				std :: cout<<"Last name canot be empty ";
 		}
 		NewContact.set_LastName(LastName);
 		std::cout << std::endl;
@@ -52,7 +58,8 @@ void PhoneBook:: AddContact() {
 		std:: cout << "Enter nick name: ";
 		while (NickName.empty()) {
 			std:: getline(std::cin, NickName);
-			std :: cout<<"Nick name canot be empty ";
+			if (NickName.empty())
+				std:: cout<<"Nick name canot be empty ";
 		}
 		NewContact.set_NickName(NickName);
 		std::cout << std::endl;
@@ -62,7 +69,8 @@ void PhoneBook:: AddContact() {
 		std:: cout << "Enter phone number: ";
 		while(PhoneNumber.empty()) {
 			std:: getline(std::cin, PhoneNumber);
-			std :: cout<<"Phone number canot be empty ";
+			if (PhoneNumber.empty())
+				std :: cout<<"Phone number canot be empty ";
 		}
 		NewContact.set_PhoneNumber(PhoneNumber);
 		std::cout << std::endl;
@@ -71,7 +79,8 @@ void PhoneBook:: AddContact() {
 		std:: cout << "Enter darkest secret: ";
 		while (DarkestSecret.empty()) {
 			std:: getline(std::cin, DarkestSecret);
-			std :: cout<<"Darkest secret canot be empty ";
+			if (DarkestSecret.empty())
+				std:: cout<<"Darkest secret canot be empty ";
 		}
 		NewContact.set_DarkestSecret(DarkestSecret);
 		std::cout << std::endl;
@@ -119,38 +128,50 @@ void PhoneBook:: PrintContact(void)//std::string input
 
 }
 
+Contact	PhoneBook:: get_contact(int index)
+{
+	return (this->_Contacts[index % 8]);
+}
+
 
 void PhoneBook::PrintFullContactInfo() {
+
+	std::cout<<"value of temp2 " << _temp << std:: endl;
     std::string index;
-    std::cout << "Enter a valid index > ";
-    std::getline(std::cin, index);
-
-    int i = std::stoi(index);
-    std::cout << "value of i: " << i << std::endl;
-    std::cout << "value of _index: " << _index << std::endl;
-
-	if (i == 1 && _index == 1) {
-		Contact savedContact = _Contacts[0];
-        std::cout << "First name: " << savedContact.get_FirstName() << std::endl;
-        std::cout << "Last name: " << savedContact.get_LastName() << std::endl;
-        std::cout << "Nick name: " << savedContact.get_NickName() << std::endl;
-        std::cout << "Phone number: " << savedContact.get_PhoneNumber() << std::endl;
-        std::cout << "Darkest secret: " << savedContact.get_DarkestSecret() << std::endl;
-		
-    }
-    else if (i >= 1 && i <= _index) {
-		Contact savedContact = _Contacts[i];
-        std::cout << "First name: " << savedContact.get_FirstName() << std::endl;
-        std::cout << "Last name: " << savedContact.get_LastName() << std::endl;
-        std::cout << "Nick name: " << savedContact.get_NickName() << std::endl;
-        std::cout << "Phone number: " << savedContact.get_PhoneNumber() << std::endl;
-        std::cout << "Darkest secret: " << savedContact.get_DarkestSecret() << std::endl;
-
-    }
-	else {
-        std::cout << "Invalid index " << std::endl;
-
+	std::cout << "Select a valid index > ";
+	bool breakLoop = false;
+	while (std::getline(std::cin, index))//cin.eof()
+	{
+		try
+		{
+			int i = std::stoi(index);
+			i = i - 1;
+			
+			
+			Contact savedContact = _Contacts[i];
+			if ((i >= 0 && i < _index) || (i <= _temp)) {
+				std::cout << "First name: " << savedContact.get_FirstName() << std::endl;
+				std::cout << "Last name: " << savedContact.get_LastName() << std::endl;
+				std::cout << "Nick name: " << savedContact.get_NickName() << std::endl;
+				std::cout << "Phone number: " << savedContact.get_PhoneNumber() << std::endl;
+				std::cout << "Darkest secret: " << savedContact.get_DarkestSecret() << std::endl;
+				if (savedContact.get_FirstName().size() > 0)
+					breakLoop = true;
+			}
+			while (!(std::cin >> i) || i > _index || i > 8 || i < 1){
+				std::cout << "Invalid index " << std::endl;
+			}
+		}
+		catch(const std::invalid_argument&)
+		{
+			std::cout << "Invalid input! Please enter a valid index." << std::endl;
+		}
+		if (breakLoop) {
+            break;
+        }
+		std::cout << "Select a valid index > ";
 	}
+	
 }
 
 void PhoneBook:: SearchContact(void)//std::string input
@@ -163,6 +184,7 @@ void PhoneBook:: SearchContact(void)//std::string input
 		// PhoneBook::PrintFullContactInfo();
 
 		PrintContact();
+		
 		PrintFullContactInfo();
 	}
 	else {
