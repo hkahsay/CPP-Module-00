@@ -18,7 +18,8 @@ class PhoneBook {
 		void SearchContact();//std::string input
 		void PrintContact();//std::string input
 		void PrintFullContactInfo();//std::string input
-		std::string GetValidInput(const std::string& field, const std::string& errorMessage);
+		Contact get_contact(std:: string Add);
+		std::string getValidInput(const std::string& field, const std::string& errorMessage);
 
 };
 #endif
