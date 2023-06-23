@@ -3,16 +3,12 @@
 
 int main() {
 
-	int N = 10;
+	int N = 20;
 	Zombie* Horde = zombieHorde(N, "zombie horde");
-
+	if (Horde == NULL)
+		return 1;
 	for (int i = 0; i < N; i++)
-	{
 		Horde[i].announce();
-	}
-	
-	// delete allocZombie;
 	delete[] Horde;
-
 	return 0;
 }
