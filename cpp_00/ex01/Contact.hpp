@@ -15,8 +15,6 @@ class Contact
 	public:
 		Contact(void);
 		~Contact();
-		//get prefix is to provide access to private or 
-		//protected data members of a class read-only mode we add const.
 		std::string get_FirstName(void)const;
 		std::string get_LastName(void) const;
 		std::string get_NickName(void) const;
@@ -27,9 +25,6 @@ class Contact
 		void set_NickName(std::string input);
 		void set_PhoneNumber(std::string input);
 		void set_DarkestSecret(std::string input);
-
-
-
 };
 
 
