@@ -5,7 +5,7 @@ CC = g++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 # Source files
-SRCS = HumanA.cpp Weapon.cpp main.cpp  
+SRCS = HumanA.cpp Weapon.cpp main.cpp  HumanB.cpp
 
 # Object files 
 OBJS = $(SRCS:.cpp=.o)

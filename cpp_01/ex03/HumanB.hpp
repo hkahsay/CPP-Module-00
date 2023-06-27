@@ -13,7 +13,7 @@ class HumanB {
 	HumanB();
 
 	~HumanB();
-	HumanB(const std:: string& HumanBRef);
+	HumanB(const std:: string& HumanBPtr);
 	void setWeapon(Weapon& setweapon);
 
 	
