@@ -1,21 +1,26 @@
 #include"Fixed.hpp"
-
-const int Fixed:: j = 0;
+#include<bitset>
+#include<cmath>
 
 Fixed:: Fixed(void): _fixFloatNbr(0) {
 	std:: cout << "Default constructor called" << std:: endl;
 	return ;
 }
 
-Fixed :: Fixed(int const n): _fixFloatNbr(n) {
+Fixed :: Fixed(int const n): _fixFloatNbr(n << _NbrFractionalBits) {
 	std:: cout << "Parametric constructor called" << std:: endl;
 	return;
+
 }
+
 Fixed :: Fixed(Fixed const & src) {
 	std:: cout << "copy constructor called"<< std:: endl;
 	_fixFloatNbr = src._fixFloatNbr;
-	return ;
 }
+
+Fixed:: Fixed(const float nbr): _fixFloatNbr((int)roundf(nbr) << _NbrFractionalBits) {
+}
+
 Fixed:: ~Fixed() {
 	std:: cout <<" Destructor called" << std:: endl;
 }
@@ -29,6 +34,7 @@ Fixed& Fixed::operator=(const Fixed& src) {
 }
 
 int Fixed:: getRawBits()const {
+	std::cout<< "";
 	return _fixFloatNbr;
 
 }
@@ -43,3 +49,5 @@ std::ostream& operator<<(std::ostream& o, Fixed const& i) {
     o << i.getRawBits();
     return o;
 }
+
+

@@ -9,7 +9,7 @@ class Fixed {
 	private:
 
 	int	_fixFloatNbr;
-	const static int j;
+	static const  int _NbrFractionalBits = 8;
 
 	public:
 
@@ -20,6 +20,7 @@ class Fixed {
 	Fixed & operator = (const Fixed& src);
 	int getRawBits()const;
 	void setRawBits(int const raw);
+	Fixed(const float nbr);
 };
 
 std::ostream& operator<< (std:: ostream & o, Fixed const & i);
