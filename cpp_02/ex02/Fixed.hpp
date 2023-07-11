@@ -28,5 +28,5 @@ class Fixed {
 
 std::ostream& operator<< (std:: ostream & o, Fixed const & rhs);
 // std::ostream& operator<< (std:: ostream & o, Fixed const & i);
-int test( void );
+	
 #endif

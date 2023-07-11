@@ -5,10 +5,10 @@ Fixed:: Fixed(void): _FixPointNbr(0) {
 	return ;
 }
 
-Fixed :: Fixed(int const n): _FixPointNbr(n) {
-	std:: cout << "Parametric constructor called" << std:: endl;
-	return;
-}
+// Fixed :: Fixed(int const n): _FixPointNbr(n) {
+// 	std:: cout << "Parametric constructor called" << std:: endl;
+// 	return;
+// }
 
 Fixed :: Fixed(Fixed const& src) {
 	std:: cout << "copy constructor called"<< std:: endl;
@@ -19,14 +19,6 @@ Fixed:: ~Fixed() {
 	std:: cout <<" Destructor called" << std:: endl;
 }
 
-Fixed& Fixed::operator=(const Fixed& src) {
-    // Copy assignment operator implementation
-    if (this != &src) {
-        _FixPointNbr = src._FixPointNbr;
-		std::cout << "Copy assignment operator called"<< std::endl;
-    }
-    return *this;
-}
 
 int Fixed:: getRawBits()const {
 	std:: cout<< "getRawBits member function called" << std:: endl;
@@ -39,8 +31,12 @@ void Fixed:: setRawBits(int const raw) {
 	return;
 }
 
-std::ostream& operator<<(std::ostream& o, Fixed const& i) {
-    // Overloaded insertion operator implementation
-    o << i.getRawBits();
-    return o;
+Fixed& Fixed::operator=(const Fixed& rhs) {
+    // Copy assignment operator implementation
+    if (this != &rhs) {
+        _FixPointNbr = rhs.getRawBits();
+		std::cout << "Copy assignment operator called"<< std::endl;
+    }
+    return *this;
 }
+
