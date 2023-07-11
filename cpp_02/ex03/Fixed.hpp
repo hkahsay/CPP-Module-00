@@ -17,7 +17,7 @@ class Fixed {
 	Fixed(int const n);
 	Fixed(Fixed const & src);
 	~Fixed(void);
-	Fixed & operator = (const Fixed& rhs);
+	Fixed & operator = (const Fixed& src);
 	int getRawBits()const;
 	void setRawBits(int const raw);
 	Fixed(const float nbr);

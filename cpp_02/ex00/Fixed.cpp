@@ -5,19 +5,21 @@ Fixed:: Fixed(void): _FixPointNbr(0) {
 	return ;
 }
 
+Fixed:: ~Fixed() {
+	std:: cout <<" Destructor called" << std:: endl;
+}
+
 // Fixed :: Fixed(int const n): _FixPointNbr(n) {
 // 	std:: cout << "Parametric constructor called" << std:: endl;
 // 	return;
 // }
 
+
 Fixed :: Fixed(Fixed const& src) {
 	std:: cout << "copy constructor called"<< std:: endl;
-	_FixPointNbr = src._FixPointNbr;
+	*this = src;
 }
 
-Fixed:: ~Fixed() {
-	std:: cout <<" Destructor called" << std:: endl;
-}
 
 
 int Fixed:: getRawBits()const {
@@ -40,3 +42,8 @@ Fixed& Fixed::operator=(const Fixed& rhs) {
     return *this;
 }
 
+std::ostream& operator<<(std::ostream& o, Fixed const& rhs) {
+    // Overloaded insertion operator implementation
+    o << rhs.getRawBits();
+    return o;
+}

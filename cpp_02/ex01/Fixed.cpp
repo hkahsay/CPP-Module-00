@@ -7,6 +7,10 @@ Fixed:: Fixed(void): _fixFloatNbr(0) {
 	return ;
 }
 
+Fixed:: ~Fixed() {
+	std:: cout <<" Destructor called" << std:: endl;
+}
+
 Fixed :: Fixed(int const n): _fixFloatNbr(n << _NbrFractionalBits) {
 	std:: cout << "Parametric constructor called" << std:: endl;
 	return;
@@ -23,9 +27,7 @@ Fixed:: Fixed(const float nbr): _fixFloatNbr(roundf(nbr * (1 << _NbrFractionalBi
 	std::cout << "Float constructor called" << std::endl;
 }
 
-Fixed:: ~Fixed() {
-	std:: cout <<" Destructor called" << std:: endl;
-}
+
 
 int Fixed:: getRawBits()const {
 	std:: cout<< "getRawBits member function called" << std:: endl;
