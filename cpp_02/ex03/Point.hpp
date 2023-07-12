@@ -17,14 +17,17 @@ class Point {
 	public:
 
 	Point(void);
-	Point(float const a, float const b);
+	Point(float const& a, float const& b);
 	Point(Point const & src);
 	~Point(void);
 	Point & operator = (const Point& rhs);
-	int getRawBits()const;
-	void setRawBits(int const raw);
-	Point(const float nbr);
-	bool bsp( Point const a, Point const b, Point const c, Point const point);
+	int getx()const;
+	int gety()const;
+	// const Fixed& Point::getx()const;
+	// const Fixed& Point::gety()const;
+
+	// void setRawBits(int const raw);
 };
+	bool bsp( Point const a, Point const b, Point const c, Point const point);
 
 #endif

@@ -2,6 +2,8 @@
 #include<bitset>
 #include<cmath>
 
+// const  int _NbrFractionalBits = 8;
+
 Fixed:: Fixed(void): _fixFloatNbr(0) {
 	// std:: cout << "Default constructor called" << std:: endl;
 	return ;
@@ -19,8 +21,10 @@ Fixed :: Fixed(Fixed const & src) {
 	return;
 }
 
-Fixed:: Fixed(const float nbr): _fixFloatNbr(roundf(nbr * (1 << _NbrFractionalBits))) {
-	// std::cout << "Float constructor called" << std::endl;
+Fixed:: Fixed(const float nbrf): _fixFloatNbr(roundf(nbrf * (1 << _NbrFractionalBits))) {
+	//conversion is performed by multiplying nbrf by the scaling 
+	//factor (1 << _NbrFractionalBits) 
+	//and rounding the result to the nearest integer using roundf function.
 }
 
 Fixed:: ~Fixed() {
@@ -49,6 +53,10 @@ Fixed& Fixed::operator=(const Fixed& rhs) {
 
 float Fixed:: toFloat(void)const {
 	return ((float)(_fixFloatNbr * (1.0f / (1 << Fixed::_NbrFractionalBits))));
+	// It performs the reverse conversion of _fixFloatNbr back to a float value. 
+	// It does this by dividing _fixFloatNbr by 
+	// the scaling factor (1 << Fixed::_NbrFractionalBits) and 
+	// casting the result to a float
 }
 
 int Fixed:: toInt(void) const {
@@ -87,29 +95,38 @@ bool Fixed:: operator != (const Fixed& other)const {
 	return(toFloat() != other.toFloat());
 }
 
-Fixed Fixed:: operator + (const Fixed& other)const {
-	// Fixed result;
-	// result._fixFloatNbr = _fixFloatNbr + other._fixFloatNbr;
-	// return result;
-	return Fixed(_fixFloatNbr + other._fixFloatNbr);
+Fixed Fixed:: operator + (Fixed const & other) {
+	Fixed result;
+	result._fixFloatNbr = _fixFloatNbr + other._fixFloatNbr;
+	return result;
+	// return Fixed(_fixFloatNbr + other._fixFloatNbr);
 
 }
 
-Fixed Fixed:: operator - (const Fixed& other)const {
-	// Fixed result;
-	// result._fixFloatNbr = _fixFloatNbr + other._fixFloatNbr;
-	// return result;
-	return Fixed(_fixFloatNbr + other._fixFloatNbr);
+// Fixed Fixed:: operator - (Fixed const & other)const {
+// 	Fixed result;
+// 	result = _fixFloatNbr - other._fixFloatNbr;
+// 	return result;
+// 	// return Fixed(_fixFloatNbr - other._fixFloatNbr);
+// }
+
+Fixed Fixed:: operator-(int value) const {
+    Fixed result;
+    result._fixFloatNbr = _fixFloatNbr - (value << _NbrFractionalBits);
+    return result;
 }
 
-Fixed Fixed:: operator * (const Fixed& other)const {
+Fixed Fixed:: operator * (Fixed const & other) {
 
-	return Fixed(_fixFloatNbr * other._fixFloatNbr);
+	Fixed result;
+	result = this->toFloat() * other.toFloat();
+	return result;
+	// return Fixed(_fixFloatNbr * other._fixFloatNbr);
 }
 
-Fixed Fixed:: operator / (const Fixed& other)const {
+Fixed Fixed:: operator / (Fixed const & other) {
 
-	return Fixed(_fixFloatNbr / other._fixFloatNbr);
+	return Fixed(toFloat() / other.toFloat());
 }
 
 Fixed Fixed:: operator ++(void){
@@ -119,8 +136,9 @@ Fixed Fixed:: operator ++(void){
 }
 
 Fixed Fixed:: operator ++(int){
+	Fixed temp(*this);
 	this->_fixFloatNbr++;
-	return *this;
+	return temp;;
 }
 
 Fixed Fixed:: operator --(void){
@@ -129,15 +147,17 @@ Fixed Fixed:: operator --(void){
 }
 
 Fixed Fixed:: operator --(int){
+	Fixed	temp(*this);
 	this->_fixFloatNbr--;
-	return*this;
+	return temp;
 }
 
 
 Fixed const& Fixed:: min( Fixed  const & a, Fixed const& b) {
 	if (a <= b)
 		return(a);
-	return(b);
+	else
+		return(b);
 	
 	
 }
@@ -145,19 +165,22 @@ Fixed const& Fixed:: min( Fixed  const & a, Fixed const& b) {
 Fixed& Fixed:: min(Fixed & a, Fixed & b) {
 	if (a < b)
 		return(a);
-	return(b);
+	else
+		return(b);
 }
 
 Fixed& Fixed:: max( Fixed & a, Fixed & b) {
 	if (a > b)
 		return(a);
-	return(b);
+	else
+		return(b);
 	
 }
 
 Fixed const & Fixed:: max(const Fixed & a, const Fixed & b) {
 	if (a >= b)
 		return(a);
-	return(b);
+	else
+		return(b);
 	
 }

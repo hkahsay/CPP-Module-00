@@ -5,7 +5,7 @@ CC = g++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 # Source files
-SRCS = Fixed.cpp  main.cpp  
+SRCS = Fixed.cpp  bsp.cpp point.cpp main.cpp  
 
 # Object files 
 OBJS = $(SRCS:.cpp=.o)
