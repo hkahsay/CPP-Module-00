@@ -21,7 +21,10 @@ ClapTrap :: ClapTrap(const std:: string& name_para): _name(name_para), _hitPoint
 
 ClapTrap :: ClapTrap(ClapTrap const & src) {
 	std:: cout << "copy constructor called"<< std:: endl;
-	*this = src;
+	*this = src._name;
+	_hitPoint = src._hitPoint;
+    _energyPoint = src._energyPoint;
+    _attackDamage = src._attackDamage;
 	return;
 }
 
