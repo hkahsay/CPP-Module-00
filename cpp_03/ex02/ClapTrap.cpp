@@ -21,7 +21,10 @@ ClapTrap :: ClapTrap(const std:: string& name_para): _name(name_para), _hitPoint
 
 ClapTrap :: ClapTrap(ClapTrap const & src) {
 	std:: cout << "copy constructor called"<< std:: endl;
-	*this = src;
+	*this = src._name;
+	_hitPoint = src._hitPoint;
+    _energyPoint = src._energyPoint;
+    _attackDamage = src._attackDamage;
 	return;
 }
 
@@ -43,11 +46,11 @@ void ClapTrap::attack(const std::string& target) {
 
 	if (this->_hitPoint <= 0 || this->_energyPoint <= 0) {
 
-		std:: cout << "Sorry!" <<target << " ClapTrap target name:- " <<this->_name <<" cannot attack because you have no energyPoints or hitPoints "<<std:: endl;
+		std:: cout <<"Sorry!" <<target << " ClapTrap target name:- " <<this->_name <<" cannot attack because you have no energyPoints or hitPoints "<<std:: endl;
 	}
 	else
 	{
-		std:: cout<< "ClapTrap " << this->_name << " target name:- " << target<< ", causing "<<this->_attackDamage << " points of damage !"<<std::endl;
+		std:: cout<< "ClapTrap " <<this->_name <<" target name:- "<< target<< ", causing "<<this->_attackDamage << " points of damage !"<<std::endl;
 		this->_energyPoint -= 1;
 
 	}
