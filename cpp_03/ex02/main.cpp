@@ -7,10 +7,10 @@
 int main( void ) {
 
 	ClapTrap a("hanniel");
-	// FragTrap b("hadriel");
+	FragTrap b("hadriel");
 	//a.attack("hermon");
 	a.attack("hermon");
-	// b.highFivesGuys();
+	b.highFivesGuys();
 
 
 	//a.beRepaired(20);
