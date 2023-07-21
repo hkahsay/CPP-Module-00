@@ -1,9 +1,9 @@
 #ifndef CRAPTRAP_HPP
 #define CRAPTRAP_HPP
 
-#include<iostream>
+#include <iostream>
 #include <iomanip>
-
+#include <string>
 class ClapTrap {
 
 	protected:
@@ -23,13 +23,11 @@ class ClapTrap {
 	void attack(const std::string& target);
 	void takeDamage(unsigned int amount);
  	void beRepaired(unsigned int amount);
-	std:: string getName()const;
-	void setName(std:: string nom);
+	void ClapTrapStatus( void );
+	
 
 
 };
 
-std::ostream& operator<< (std:: ostream & o, ClapTrap const & rhs);
-// std::ostream& operator<< (std:: ostream & o, ClapTrap const & i);
-	
+
 #endif

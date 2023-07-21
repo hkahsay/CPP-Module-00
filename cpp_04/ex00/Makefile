@@ -5,13 +5,13 @@ CC = g++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 # Source files
-SRCS = ClapTrap.cpp ScavTrap.cpp FragTrap.cpp main.cpp  
+SRCS = Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp main.cpp  
 
 # Object files 
 OBJS = $(SRCS:.cpp=.o)
 
 # Executable name OR target
-NAME = FragTrap
+NAME = Polymorphism
 
 RM = rm -f
 

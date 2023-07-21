@@ -1,7 +1,6 @@
 #include "ScavTrap.hpp"
-// #include <iostream>
 
-ScavTrap::ScavTrap() {
+ScavTrap::ScavTrap():ClapTrap() {
 
 	std::cout << "ScavTrap Default constructor called" << std::endl;
     _hitPoint = 100;
@@ -55,14 +54,15 @@ int ScavTrap::getAttackDamage()const
 }
 
 void ScavTrap:: attack(const std::string& target){
-	// ClapTrap::attack(target);
 	if (this->_hitPoint <= 0 || this->_energyPoint <= 0) {
 
-		std:: cout <<"Sorry!" <<target << " ScavTrap target name:- " <<this->_name <<" cannot attack because you have no energyPoints or hitPoints "<<std:: endl;
+		std:: cout <<"Sorry! ScavTrap target name:- " <<this->_name
+		<<" cannot attack because you have no energyPoints or hitPoints "<<std:: endl;
 	}
 	else
 	{
-		std:: cout<< "ScavTrap " <<this->_name <<" target name:- "<< target<< ", causing "<<this->_attackDamage << " points of damage !"<<std::endl;
+		std:: cout<<this->_name <<" target name:- "<< target<< ", causing "
+		<<this->_attackDamage << " points of damage !"<<std::endl;
 		this->_energyPoint -= 1;
 
 	}
@@ -71,7 +71,8 @@ void ScavTrap:: attack(const std::string& target){
 
 void ScavTrap:: guardGate() {
 	if (this->_hitPoint <= 0){
-		std:: cout <<"Sorry!" <<this->_name << " ScavTrap is not in Gate keeper mode. " <<this->_name <<" cannot attack because you have no energyPoints or hitPoints "<<std:: endl;
+		std:: cout <<"Sorry!" <<this->_name << "  is not in Gate keeper mode. " <<this->_name 
+		<<" cannot attack because you have no energyPoints or hitPoints "<<std:: endl;
 		return;
 	}
 	std:: cout<< "ScavTrap is now in Gate keeper mode."<< std:: endl;
@@ -83,8 +84,8 @@ void ScavTrap:: guardGate() {
 void ScavTrap::ScavTrapStatus( void )
 {
 	std::cout << std::endl;
-	std::cout << "ScavTrap _name	" << this->_name << std::endl;
-	std::cout << "hitpoint		    " << this->_hitPoint << std::endl;
+	std::cout << "name      	    " << this->_name << std::endl;
+	std::cout << "hitpoint		" << this->_hitPoint << std::endl;
 	std::cout << "energypoint		" << this->_energyPoint << std::endl;
 	std::cout << "attackDamage		" << this->_attackDamage << std::endl << std::endl;
 	return ;

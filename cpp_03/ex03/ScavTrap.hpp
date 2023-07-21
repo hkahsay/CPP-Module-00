@@ -25,5 +25,7 @@ class ScavTrap : virtual public ClapTrap {
 };
 
 
+//Virtual inheritance is a C++ technique that ensures only one copy of 
+//a base class's member variables are inherited by grandchild derived classes.
 
 #endif

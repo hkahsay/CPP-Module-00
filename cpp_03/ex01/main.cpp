@@ -4,14 +4,17 @@
 
 int main( void ) {
 
-	//ClapTrap a("hanniel");
-	ScavTrap b("hadriel");
-	//a.attack("hermon");
-	b.attack("hermon");
+	ClapTrap a("ClapTrap");
+	ScavTrap b("ScavTrap");
+
+	a.ClapTrapStatus();
+	a.attack("weapon_ClapTrap");
+	a.takeDamage(5);
+	a.beRepaired(20);
+
+	b.ScavTrapStatus();
+	b.attack("weapon_ScavTrap");
 	b.guardGate();
-
-
-	//a.beRepaired(20);
 	return (0);
 
 }

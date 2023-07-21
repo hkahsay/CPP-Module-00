@@ -3,6 +3,8 @@
 
 #include<iostream>
 #include <iomanip>
+#include <string>
+
 
 class ClapTrap {
 
@@ -27,6 +29,7 @@ class ClapTrap {
 	void attack(const std::string& target);
 	void takeDamage(unsigned int amount);
  	void beRepaired(unsigned int amount);
+	void ClapTrapStatus( void );
 
 
 

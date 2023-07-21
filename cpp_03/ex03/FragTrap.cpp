@@ -66,8 +66,8 @@ void FragTrap:: highFivesGuys(void) {
 void FragTrap::FragTrapStatus( void )
 {
 	std::cout << std::endl;
-	std::cout << "FragTrap _name	" << this->_name << std::endl;
-	std::cout << "hitpoint		    " << this->_hitPoint << std::endl;
+	std::cout << "name       	    " << this->_name << std::endl;
+	std::cout << "hitpoint		" << this->_hitPoint << std::endl;
 	std::cout << "energypoint		" << this->_energyPoint << std::endl;
 	std::cout << "attackDamage		" << this->_attackDamage << std::endl << std::endl;
 	return ;

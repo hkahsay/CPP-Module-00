@@ -4,6 +4,8 @@
 #include <iostream>
 #include <iomanip>
 #include "ClapTrap.hpp"
+#include <string>
+
 
 
 

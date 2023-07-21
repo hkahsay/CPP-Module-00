@@ -3,6 +3,7 @@
 
 #include<iostream>
 #include <iomanip>
+#include <string>
 
 class FragTrap : public ClapTrap{
 
@@ -12,10 +13,10 @@ class FragTrap : public ClapTrap{
 	FragTrap (const std:: string& name_para);
 	FragTrap(FragTrap const & src);
 	~FragTrap(void);
+	FragTrap &	operator=(FragTrap const & rhs);
+	
+	void FragTrapStatus(void);
     void highFivesGuys(void);
 };
 
-std::ostream& operator<< (std:: ostream & o, FragTrap const & rhs);
-// std::ostream& operator<< (std:: ostream & o, FragTrap const & i);
-	
 #endif

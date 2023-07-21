@@ -7,16 +7,29 @@
 
 int main( void ) {
 
-	ClapTrap a("hanniel");
-	FragTrap b("hadriel");
-	DiamondTrap d("Diamond");
-	//a.attack("hermon");
-	a.attack("hermon");
+	ClapTrap a("ClapTrap");
+	ScavTrap b("ScavTrap");
+	FragTrap c("FragTrap");
+	DiamondTrap d("DiamondTrap");
 
-	b.highFivesGuys();
-
-	// d.DiamondTrapStatus();
+	a.ClapTrapStatus();
+	a.attack("weapon_ClapTrap");
+	a.takeDamage(30);
 	a.beRepaired(20);
+
+	b.ScavTrapStatus();
+	b.attack("weapon_ScavTrap");
+	b.guardGate();
+
+	c.FragTrapStatus();
+	c.highFivesGuys();
+
+	d.DiamondTrapStatus();
+	d.attack("weapon_diamond");
+	d.whoAmI();
+
+
+
 	return (0);
 
 }

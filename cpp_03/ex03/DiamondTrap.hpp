@@ -7,16 +7,12 @@
 #include"FragTrap.hpp"
 #include"ScavTrap.hpp"
 
-//class DiamondTrap: virtual public ScavTrap, virtual public FragTrap 
 
 class DiamondTrap: public ScavTrap, public FragTrap {
 
 	private:
 
 	std:: string	_name;
-	// int _hitPoint;
-	// int _energyPoint;
-	// int _attackDamage;
 
 	public:
 
@@ -27,7 +23,7 @@ class DiamondTrap: public ScavTrap, public FragTrap {
 	DiamondTrap & operator = (const DiamondTrap& rhs);
 	void attack(const std::string& target);
 	void whoAmI();
-	// void DiamondTrapStatus( void );
+	void DiamondTrapStatus( void );
 
 
 };

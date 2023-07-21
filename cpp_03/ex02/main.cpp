@@ -6,14 +6,21 @@
 
 int main( void ) {
 
-	ClapTrap a("hanniel");
-	FragTrap b("hadriel");
-	//a.attack("hermon");
-	a.attack("hermon");
-	b.highFivesGuys();
+	ClapTrap a("ClapTrap");
+	ScavTrap b("ScavTrap");
+	FragTrap c("FragTrap");
 
+	a.ClapTrapStatus();
+	a.attack("weapon_ClapTrap");
+	a.takeDamage(30);
+	a.beRepaired(20);
 
-	//a.beRepaired(20);
+	b.ScavTrapStatus();
+	b.attack("weapon_ScavTrap");
+	b.guardGate();
+
+	c.FragTrapStatus();
+	c.highFivesGuys();
 	return (0);
 
 }
