@@ -8,51 +8,42 @@
 
 int main()
 {
-	const Animal* meta = new Animal();
+	const int index = 6;
+	Animal* animalObject[index];
 
-	const Animal* j = new Dog();
-
-	const Animal* i = new Cat();
-
-	const Animal *anotherDog = new Dog("buddy");
-
-	const Animal *anotherCat = new Cat("Tomy");
-
-	std::cout << std::endl;
-	const WrongAnimal *WCat = new WrongCat();
-	std::cout << std::endl;
-
-
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	j->makeSound();
-	i->makeSound(); //will output the cat sound!
-	meta->makeSound();
-
-	std::cout << std::endl;
-
-	std::cout << anotherDog->getType() << " " << std::endl;
-	std::cout << anotherCat->getType() << " " << std::endl;
-	anotherDog->makeSound(); //will output the cat sound!
-	anotherCat->makeSound();
-	meta->makeSound();
-
-	std::cout << std::endl;
+	// Create half Dog objects and half Cat objects
+	for (int i = 0; i < index; i++)
+	{
+		if(i % 2 == 0)
+			animalObject[i] = new Dog();
+		else
+			animalObject[i] = new Cat();
+	}
+	for (int i = 0; i < index; i++)
+		animalObject[i]->makeSound();
+	for (int i = 0; i < index; i++)
+		delete animalObject[i];
 	
-	std:: cout<< WCat->getType()<< "" <<std::endl;
-	WCat->makeSound();
-	std::cout << std::endl;
+	Dog dogCharacter;
+	for (int i = 0; i < 5 ; i++)
+	{
+		dogCharacter.getBrain()->setIdeas(0, "I am Good guard dog");
+		dogCharacter.getBrain()->setIdeas(1, "Good temperament");
+		dogCharacter.getBrain()->setIdeas(2, "intelligen");
 
+		std::cout << "Idea " << i << " of dogCharacter : " << dogCharacter.getBrain()->getIdeas(i) << std::endl;
+	}
 
-	delete j;
-	delete i;
-	delete meta;
-	delete anotherDog;
-	delete anotherCat;
-	delete WCat;
+	Cat catCharacter;
+	for (int i = 0; i < 5 ; i++)
+	{
+		catCharacter.getBrain()->setIdeas(0, "I am playfulness cat");
+		catCharacter.getBrain()->setIdeas(1, "Fearfulness");
+		catCharacter.getBrain()->setIdeas(2, "Excessive grooming");
+
+		std::cout << "Idea " << i << " of catCharacter : " << catCharacter.getBrain()->getIdeas(i) << std::endl;
+	}
 
 	return 0;
-
 }
-
 

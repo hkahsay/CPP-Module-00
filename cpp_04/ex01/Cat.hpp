@@ -5,20 +5,26 @@
 #include <iomanip>
 #include "Animal.hpp"
 #include <string>
+#include "Brain.hpp"
+
 
 
 
 
 class Cat : public Animal{
 
+	private:
+	Brain* _brain;
+
 	public:
 
 	Cat(void);// Default constructor
-	Cat (const std:: string& name);
 	Cat(Cat const & src);
 	~Cat(void);
 	Cat &	operator=(Cat const & rhs);
-	void makeSound()const;// Override the virtual function
+	void makeSound(void)const; // Override the virtual function
+	Brain* getBrain(void)const;
+
 
 };
 
