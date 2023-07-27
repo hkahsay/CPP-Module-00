@@ -7,7 +7,7 @@
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
 
-// class AMateria;
+class AMateria;
 
 class Character :public ICharacter {
 	private:
@@ -15,11 +15,12 @@ class Character :public ICharacter {
 		AMateria* _inventorySlot[ NUMBER_OF_SLOTS];
 	public:
 		Character();
-		~Character();
+		virtual ~Character();
 		Character(const std:: string& name);
 		Character(Character const  & src);
 		Character & operator = (Character const & rhs);
 		std::string const & getName() const;
+		AMateria* getMateriaFromInventory(int idx);
 		void equip(AMateria* m);
 		void unequip(int idx);
 		void use(int idx, ICharacter& target);

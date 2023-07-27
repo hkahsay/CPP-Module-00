@@ -3,8 +3,8 @@
 
 #include <iostream>
 #include <string>
-#include "AMateria.hpp";
-#include "ICharacter.hpp";
+#include "AMateria.hpp"
+#include "ICharacter.hpp"
 
 
 class Cure : public AMateria {
@@ -14,7 +14,7 @@ class Cure : public AMateria {
 		~Cure();
 		Cure(Cure const  & src);
 		Cure & operator = (Cure const & rhs);
-		Cure(std::string & const type);
+		Cure(std::string & type);
 		Cure(const std:: string & type);
 		AMateria* clone() const;
 		void use(ICharacter& target);

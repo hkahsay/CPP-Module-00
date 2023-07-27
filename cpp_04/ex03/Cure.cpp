@@ -25,11 +25,14 @@ Cure :: Cure(Cure const & src) {
 }
 
 Cure& Cure::operator=(const Cure& rhs) {
-	std::cout << "Cure Copy assignment operator called" << std::endl;
+	
     // Copy assignment operator implementation
+
+    // Check for self-assignment to avoid unnecessary work
     if (this != &rhs) {
         this->_type = rhs.getType();
     }
+	std::cout << "Cure Copy assignment operator called" << std::endl;
     return *this;
 }
 

@@ -17,26 +17,24 @@ AMateria:: AMateria(AMateria const & src) {
 AMateria & AMateria:: operator = (AMateria const & rhs) {
 	if(this != &rhs)
 		this->_type = rhs.getType();
+	return *this;
 }
 
-AMateria:: AMateria(std::string & const type) {
+AMateria:: AMateria(std::string & type) {
 	_type = type;
 }
 std::string const & AMateria:: getType() const {
 	return _type;
 }
 
-// void AMateria:: setType(std:: string type) {
-// 	this->_type = type;
-// }
-AMateria* AMateria:: clone() const {
-	std:: cout <<"AMateria clone will do nothing just act as placeholder for subclasses"<< std:: endl;
-	// return ;
+void AMateria:: setType(std:: string type) {
+	this->_type = type;
 }
+
 
 void AMateria:: use(ICharacter& target) {
 	
-	std:: cout <<"All child classes use thier own identity not from parent"<< std:: endl;
+	std:: cout <<"All child classes use thier own identity not from parent"<< target.getName()<< std:: endl;
 	return ;
 
 }

@@ -16,10 +16,11 @@ RED			= \033[0;31m
 NONE		= \033[0m
 
 # Source files
-SRCS = AAnimal.cpp \
-	   Dog.cpp \
-	   Cat.cpp \
-	   Brain.cpp \
+SRCS = AMateria.cpp \
+	   Cure.cpp \
+	   Ice.cpp \
+	   Character.cpp \
+	   MateriaSource.cpp \
 	   main.cpp 
 
 # Object files directory
@@ -29,7 +30,7 @@ DIR_OBJ = obj
 OBJS = $(addprefix $(DIR_OBJ)/, $(SRCS:.cpp=.o))
 
 # Executable name OR target
-NAME = AbstractClass
+NAME = AbstractInterface
 
 RM = rm -f
 RMDIR = rm -rf
