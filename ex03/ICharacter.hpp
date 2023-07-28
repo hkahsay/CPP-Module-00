@@ -4,11 +4,7 @@
 #include<iostream>
 #include<string>
 #include "AMateria.hpp"
-
-// inform the compiler that AMateria exists and is going to be instancied later.
-
 class AMateria;
-
 class ICharacter
 {
 public:

@@ -24,10 +24,6 @@ Ice :: Ice(Ice const & src) {
 	return;
 }
 
-std::string const & Ice:: getType() const {
-	return _type;
-}
-
 Ice& Ice::operator=(const Ice& rhs) {
 	std::cout << "Ice Copy assignment operator called" << std::endl;
     // Copy assignment operator implementation

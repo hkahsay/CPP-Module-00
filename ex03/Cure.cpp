@@ -13,13 +13,13 @@ Cure:: ~Cure() {
 
 Cure:: Cure(const std:: string & type) {
 	std:: cout << "Cure type constructor called"<< std:: endl;
-	this->_type = type;
+	_type = type;
 
 }
 
 Cure :: Cure(Cure const & src) {
 	std:: cout << "Cure copy constructor called"<< std:: endl;
-	this->_type = src.getType(); // is the same as *this = src
+	_type = src.getType(); // is the same as *this = src
 	
 	return;
 }

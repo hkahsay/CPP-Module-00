@@ -1,28 +1,28 @@
 #include "Character.hpp"
 
-Character::Character() : _name(), _inventorySlot() {
-	// this->_inventorySlot = new AMateria*[4];
 
-    for (int i = 0; i < 4; i++) {
-        _inventorySlot[i] = NULL;
-    }
-    std::cout << "Character Default Constructor called" << std::endl;
+Character:: Character():_name("no name") {
+
+	for (int i = 0; i < NUMBER_OF_SLOTS; i++)
+	{
+		_inventorySlot[i] = NULL;
+	}
+	std:: cout << "Character Default Constructor called"<<std:: endl;
+	
+	return ;
 }
 
-Character::Character(const std::string& name) : _name(name) {
-	std::cout << "char para"<<std:: endl;
-	// this->_inventorySlot = new AMateria*[4];
-    for (int i = 0; i < 4; i++) {
-        _inventorySlot[i] = NULL;
-    }
-	std::cout << "char para2 "<< _name<<std:: endl;
+Character:: Character(const std::string& name): _name(name) {
 
+	for (int i = 0; i < NUMBER_OF_SLOTS; i++)
+	{
+		_inventorySlot[i] = NULL;
+	}
 }
-
 
 Character:: ~Character() {
 	std:: cout << " Character Default Destructor called"<<std:: endl;
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < NUMBER_OF_SLOTS; i++)
 	{
 		if(this->_inventorySlot[i])
 		{
@@ -35,42 +35,38 @@ Character:: ~Character() {
 
 Character:: Character(Character const & src) {
 
-	this->_name =  src.getName();
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < NUMBER_OF_SLOTS; i++)
 	{
 		if(src._inventorySlot[i])
-			this->_inventorySlot[i] = src._inventorySlot[i]->clone();
-		else
-			this->_inventorySlot[i] = NULL;
+		this->_inventorySlot[i] = src._inventorySlot[i]->clone();
 	}
+	this->_name =  src.getName();
 	
 }
 
 Character & Character:: operator = (Character const & rhs) {
 
-
     // Check for self-assignment to avoid unnecessary work
 	if(this != &rhs)
 	{
-		// Copy the name
-		this->_name = rhs.getName();
-
-		for (int i = 0; i < 4; i++)
+		// / Delete existing Materias in the inventory
+		for (int i = 0; i < NUMBER_OF_SLOTS; i++)
 		{
-			if (this->_inventorySlot[i] != NULL) {
-
-			//  Delete existing Materias in the inventory
-				delete this->_inventorySlot[i];
-				_inventorySlot[i] = NULL;
-
-			}
+			delete _inventorySlot[i];
+			_inventorySlot[i] = NULL;
+		}
+		 // Copy the contents of the rhs object to this object
+		 for (int i = 0; i < NUMBER_OF_SLOTS; i++)
+		 {
 			// it checks if the corresponding slot in the rhs object's inventory
 			// is pointing to a Materia (not NULL). If it is, it uses the clone() 
 			// function to create a new copy of the Materia and stores the 
 			// pointer in the corresponding slot of the this object's inventory.
 			if (rhs._inventorySlot[i])
 				this->_inventorySlot[i] = rhs._inventorySlot[i]->clone();
-		}
+		 }
+		 // Copy the name
+		 _name = rhs.getName();
 		 
 	}
 	 // Return *this to enable chained assignments
@@ -79,22 +75,23 @@ Character & Character:: operator = (Character const & rhs) {
 
 
 std::string const & Character:: getName() const {
-	return this->_name;
+	return _name;
 }
 
-AMateria* Character::getMateriaFromInventory(int idx)
+
+AMateria	*Character::getMateriaFromInventory(int idx)
 {
 	return _inventorySlot[idx];
 }
 
 
 void Character:: equip(AMateria* m) {
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < NUMBER_OF_SLOTS; i++)
 	{
-		if (this->_inventorySlot[i] == NULL)
+		if (!_inventorySlot[i])
 		{
-			this->_inventorySlot[i] = m;
-			std::cout << m->getType()<< "materia is added"<<std:: endl;
+			_inventorySlot[i] = m;
+			std::cout <<m->getType()<< "materia is added"<<std:: endl;
 			break;
 			// Since the character can only equip one AMateria in each slot, the 
 			// loop stops as soon as it finds an empty slot and equips the AMateria there.
@@ -103,8 +100,6 @@ void Character:: equip(AMateria* m) {
 	}	
 
 }
-
-
 
 void Character:: unequip(int idx) {
 	if (idx < 0 || idx > 3)
@@ -121,18 +116,10 @@ void Character:: unequip(int idx) {
 }
 
 void Character:: use(int idx, ICharacter& target) {
+	if (idx < 0 || idx > 3 || !_inventorySlot[idx])
+		std::cout <<"invalid index or target doesnot exist "<< std:: endl;
+	_inventorySlot[idx]->use(target);
 
-	if (idx < 0 || idx > 3 || this->_inventorySlot[idx] == NULL)
-	{
-		std::cout <<"invalid index or target doesnot exist " << idx << " " <<target.getName()<< std:: endl;
-		std::cout << "this->_inventorySlot[idx]"<< this->_inventorySlot[idx] <<std:: endl;
-		return;
-	}
-	else
-	{
-
-		std:: cout << _name<< ": ";
-		this->_inventorySlot[idx]->use(target);
-	}
-		
 }
+
+
