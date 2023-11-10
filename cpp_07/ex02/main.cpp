@@ -1,32 +1,53 @@
-#include"Array.hpp"
+// #include"Array.hpp"
+#include"arrayt.hpp"
+
 #define MAX_VALUE 10
 
 int	main()
 {
 	std::cout<<"--------Empty array test--------\n";
 	Array<int> empty;
-	try
+	try//<< empty[0]
 	{
-		std::cout<< "access the value of empty array which is not possible: "<<&empty <<std::endl<< " access empty[0]"<< empty[0]<<std::endl;
+		std::cout<< "access the value of empty array: "<<&empty <<std::endl<< " access empty[0]"<<std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
 
-	std::cout<<"--------test n size of array--------\n";
-	
-	Array<int> tarray(6);
-	int * a = new int();
-	std::cout << "value of a"<<a<<std::endl;
-	int	*marraay = new int[6];
-	tarray[0] = 2;
-	tarray[1] = 5;
-	tarray[3] = 6;
-	marraay[0] = 5;
-	marraay[1] = 8;
-	std::cout<<"marray: "<<marraay[0]<<"\ntarray: "<< tarray[0]<<std::endl;
-	
+	std::cout<<"--------test copy constructor int string and float --------\n";
+	Array<int> arr(3);
+	arr[1] = 5;
+	Array<int> arr2(arr);
+	arr[1] = 6;
+	Array<float> fnbr(MAX_VALUE);
+	fnbr[5]= 7.8f;
+	Array<float> copyfnbr(fnbr);
+	fnbr[5] = 10.7f;
+
+	std::cout<<"arr.size():  " << arr.size()<< std::endl;
+	std::cout<<"arr[1]:      " << arr[1]<< std::endl;
+	std::cout<<"arr2.size(): " << arr2.size()<< std::endl;
+	std::cout<<"arr2[1]:     " << arr2[1]<< std::endl;
+	std::cout<<"fnbr.size():  " << fnbr.size()<< std::endl;
+	std::cout<<"fnbr[5]:      " << fnbr[5]<< std::endl;
+	std::cout<<"copyfnbr.size():  " << copyfnbr.size()<< std::endl;
+	std::cout<<"copyfnbr[5]:      " << copyfnbr[5]<< std::endl;
+
+	// std::cout<<"--------test assignment operator --------\n";
+	// Array<int> arr3(3);
+	// arr3[1] = 5;
+	// Array<int> arr4(2);
+	// arr4 = arr3;
+	// arr3[1] = 6;
+
+	// std::cout<<"arr3.size():  " << arr3.size()<< std::endl;
+	// std::cout<<"arr3[1]:      " << arr3[1]<< std::endl;
+	// std::cout<<"arr4.size():  " << arr4.size()<< std::endl;
+	// std::cout<<"arr4[1]:      " << arr4[1]<< std::endl;
+
+
 
 	return 0;
 }
