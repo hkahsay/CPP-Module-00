@@ -1,5 +1,5 @@
-#ifndef ARRAYT_HPP
-#define ARRAYT_HPP
+#ifndef ARRAY_HPP
+#define ARRAY_HPP
 
 #include<iostream>
 #include<exception>
@@ -20,9 +20,9 @@ class Array
 		unsigned int	size()const;
 		~Array();
 };
-// template<typename T>
-// std::ostream&		operator<<(std::ostream& stream, const Array<T>& rhs);
+template<typename T>
+std::ostream&		operator<<(std::ostream& stream, const Array<T>& rhs);
 
-#include "arrayt.tpp"
+#include "Array.tpp"
 
 #endif
