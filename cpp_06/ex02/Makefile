@@ -5,13 +5,13 @@ CC = g++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 # Source files
-SRCS = ScalarConversion.cpp main.cpp  
+SRCS = Base.cpp A.cpp B.cpp C.cpp main.cpp  
 
 # Object files 
 OBJS = $(SRCS:.cpp=.o)
 
 # Executable name OR target
-NAME = Converter
+NAME = base
 
 RM = rm -f
 

@@ -13,6 +13,12 @@ int main(int argc, char **argv)
         std::string userInput = argv[1];
         ScalarConverter SConvert(userInput);
         std::cout <<"userInput "<<userInput<<std::endl;
+        long long nbr = atoll(userInput.c_str());
+        if (nbr < INT_MIN && nbr > INT_MAX)
+        {
+            std::cerr << "Value is out of the range of INT_MIN to INT_MAX" << std::endl;
+            exit(EXIT_FAILURE);
+        }
         SConvert.identify_convert(userInput);
         // try
         // {
