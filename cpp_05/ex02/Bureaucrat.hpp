@@ -6,7 +6,7 @@
 /*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:11:25 by hkahsay           #+#    #+#             */
-/*   Updated: 2023/11/21 11:11:26 by hkahsay          ###   ########.fr       */
+/*   Updated: 2023/11/21 15:11:58 by hkahsay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ class Bureaucrat {
 	void setGrade(int grade);
 	void incrementGrade(void);
 	void decrementGrade(void);
-
+	void executeForm(AForm const & form);
 	class GradeTooHighException: public std::exception {
 		public:
 

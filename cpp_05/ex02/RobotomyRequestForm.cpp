@@ -16,6 +16,11 @@ RobotomyRequestForm:: RobotomyRequestForm(RobotomyRequestForm const &src): AForm
 
 }
 
+RobotomyRequestForm:: ~RobotomyRequestForm()
+{
+
+}
+
 std::string RobotomyRequestForm:: getTarget()const
 {
     return this->_targetRobotomy;
@@ -29,3 +34,29 @@ RobotomyRequestForm& RobotomyRequestForm:: operator=(RobotomyRequestForm const &
 	}
 	return *this;
 }
+
+void	RobotomyRequestForm:: execute(Bureaucrat const & executor) const
+{
+	if (this->getSigned() == false)
+		throw	AForm:: NotSignedException();
+	else if (executor.getGrade() <= this->getGrade_exec())
+	{
+		std::cout<< "vouvouuuuuuu"<<std::endl;
+		srand(time(NULL));
+		int random = rand()%2;
+		if(random != 0)
+		{
+			std::cout<< this->_targetRobotomy<< " has been robotomized "<<
+			"successfully"
+			<<std::endl;
+
+		}
+		else
+			std::cout <<"Robotomized is failed"<<std::endl;
+	}
+	else
+		throw AForm ::GradeTooLowException();
+	
+	
+}
+

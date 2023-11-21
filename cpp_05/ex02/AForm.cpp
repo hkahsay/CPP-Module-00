@@ -6,7 +6,7 @@
 /*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:11:15 by hkahsay           #+#    #+#             */
-/*   Updated: 2023/11/21 11:11:16 by hkahsay          ###   ########.fr       */
+/*   Updated: 2023/11/21 14:46:58 by hkahsay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,9 +113,16 @@ std::ostream& operator<< (std:: ostream & o, AForm const& rhs) {
 void AForm::beSigned(Bureaucrat &bureaucrat)
 {
     if(bureaucrat.getGrade() > this->_grade_sign)
+    {
+        std::cout<<" this->_grade_sign "<<this->_grade_sign<<std::endl;
         throw AForm:: GradeTooLowException();
+    }
     else
+    {
+        std::cout<<" this->_grade_sign true: "<<this->_grade_sign<<std::endl;
+        
         this->_signed = true;
+    }
 }
 
 char const*  AForm:: NotSignedException:: what() const throw()
