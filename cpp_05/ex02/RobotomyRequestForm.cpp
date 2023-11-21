@@ -11,7 +11,8 @@ RobotomyRequestForm:: RobotomyRequestForm(std::string target): AForm("_targetRob
 	srand(time(NULL));
 }
 
-RobotomyRequestForm:: RobotomyRequestForm(RobotomyRequestForm const &src): AForm(src.getTarget(),72, 45)
+RobotomyRequestForm:: RobotomyRequestForm(RobotomyRequestForm const &src)
+: AForm(src.getName(), src.getGrade_sign(), src.getGrade_exec())
 {
 
 }

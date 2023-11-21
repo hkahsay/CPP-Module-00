@@ -6,7 +6,7 @@
 #    By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 11:11:32 by hkahsay           #+#    #+#              #
-#    Updated: 2023/11/21 11:11:33 by hkahsay          ###   ########.fr        #
+#    Updated: 2023/11/21 17:12:11 by hkahsay          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC = g++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 # Source files
-SRCS = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp 
+SRCS = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
 # Object files 
 OBJS = $(SRCS:.cpp=.o)

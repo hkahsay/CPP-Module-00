@@ -1,9 +1,13 @@
 #ifndef ROBOTOMYREQUESTFORM_HPP
 #define ROBOTOMYREQUESTFORM_HPP
 
+#include<string>
+#include<iostream>
+#include <iomanip>
+#include "Bureaucrat.hpp"
+#include <fstream>
 #include "AForm.hpp"
 
-#include <iostream>
 class RobotomyRequestForm: public AForm
 {
 	private:
