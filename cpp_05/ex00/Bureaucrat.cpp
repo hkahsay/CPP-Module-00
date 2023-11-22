@@ -6,7 +6,7 @@
 /*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:09:33 by hkahsay           #+#    #+#             */
-/*   Updated: 2023/11/21 11:09:34 by hkahsay          ###   ########.fr       */
+/*   Updated: 2023/11/21 17:09:42 by hkahsay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ void Bureaucrat::setGrade(int grade)
     this->_grade = grade;
 }
 
-std::ostream& operator<< (std:: ostream & o, Bureaucrat const& rhs) {
+std::ostream& operator<< (std:: ostream & o, Bureaucrat const& rhs)
+{
     o << rhs.getName() << ", bureaucrat grade " << rhs.getGrade() << std::endl;
     return o;
 }
