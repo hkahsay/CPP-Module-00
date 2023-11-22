@@ -6,7 +6,7 @@
 /*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:11:29 by hkahsay           #+#    #+#             */
-/*   Updated: 2023/11/21 17:14:48 by hkahsay          ###   ########.fr       */
+/*   Updated: 2023/11/22 16:28:40 by hkahsay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,51 +17,50 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int main( void ) {
 	try {
 		Bureaucrat b("Bob",6);
-		// Bureaucrat c("Bob",36);
-
-		ShrubberyCreationForm f2("home");
-		RobotomyRequestForm f3("home");
-		RobotomyRequestForm f4(f3);
-		PresidentialPardonForm f6("home");
-		// ShrubberyCreationForm f(b.getName());
-		// f2.beSigned(b);
-		f3.beSigned(b);
-		f4.beSigned(b);
-		f6.beSigned(b);
+		Bureaucrat	b1("hanniel", 4);
+		// Bureaucrat	b2("hadriel", 3);
+		// Bureaucrat	b3("heaven", 2);
 
 	
-		b.signForm(f2);
-		b.signForm(f3);
-		b.signForm(f4);
-
+		Intern		hur;
 		
-		// std::cout <<"f2 \n"<< f2 << std::endl;
-		std::cout << b << std::endl;
+		std::cout<< "--------------test shrubbery----------\n\n";
+		AForm*	shrubbyery = hur.makeForm("Shrubbery Creation Form", "home");
+		std::cout << *shrubbyery << std::endl;
+		b1.signForm(*shrubbyery);
+		b1.executeForm(*shrubbyery);
+		std::cout << *shrubbyery << std::endl;
+		delete shrubbyery;
 
-		f2.execute(b);
-		f3.execute(b);
-		f4.execute(b);
-		f6.execute(b);
+		std::cout<< "--------------test Robotomy----------\n\n";
+		AForm*	robotomy = hur.makeForm("Robotomy Request Form", "home");
+		std::cout << *robotomy << std::endl;
+		b1.signForm(*robotomy);
+		b1.executeForm(*robotomy);
+		std::cout << *robotomy << std::endl;
+		delete robotomy;
 
-		std::cout <<"f2 :"<< f2 << std::endl;
-
-		std::cout <<"f4 :"<< f4 << std::endl;
-		std::cout <<"f3 :"<< f3 << std::endl;
+		std::cout<< "--------------test presidential----------\n\n";
+		AForm*	presidential = hur.makeForm("Presidential Pardon Form", "office");
+		std::cout << *presidential << std::endl;
+		b1.signForm(*presidential);
+		b1.executeForm(*presidential);
+		std::cout << *presidential << std::endl;
+		delete presidential;
 		
-
-
-		b.executeForm(f2);
-		b.executeForm(f3);
+		std::cout<< "--------------test desnot exist----------\n\n";
+		AForm*	none = hur.makeForm("Robotomy", "work");
+		std::cout << *none << std::endl;
+		b1.signForm(*none);
+		b1.executeForm(*none);
+		std::cout << *none << std::endl;
+		delete none;
 		
-		// std::cout <<"f3"<< f3 << std::endl;
-
-		// c.incrementGrade();
-		// b.decrementGrade();
-		// std::cout << c << std::endl;
 	} catch (std::exception & e) {
 		std::cout << e.what() << std::endl;
 	}

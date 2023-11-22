@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mac <mac@student.42.fr>                    +#+  +:+       +#+         #
+#    By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 11:11:32 by hkahsay           #+#    #+#              #
-#    Updated: 2023/11/22 11:16:14 by mac              ###   ########.fr        #
+#    Updated: 2023/11/22 16:31:51 by hkahsay          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRCS = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyReque
 OBJS = $(SRCS:.cpp=.o)
 
 # Executable name OR target
-NAME = AForm
+NAME = Intern
 
 RM = rm -f
 
