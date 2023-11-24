@@ -6,7 +6,7 @@
 /*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:11:09 by hkahsay           #+#    #+#             */
-/*   Updated: 2023/11/21 13:13:35 by hkahsay          ###   ########.fr       */
+/*   Updated: 2023/11/23 11:58:38 by hkahsay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,29 @@ ShrubberyCreationForm& ShrubberyCreationForm:: operator= (ShrubberyCreationForm 
     return *this;
 }
 
-void ShrubberyCreationForm:: execute(Bureaucrat const & executor) const
+bool ShrubberyCreationForm:: execute(Bureaucrat const & executor) const
 {
-    if (getSigned() == false )
-        throw AForm::NotSignedException();
-    else if (executor.getGrade() <= this->getGrade_exec())
+    try 
     {
-        std::ofstream ofs(this->_target + "_Shrubbery");
-        ofs<<_fileName;
-        ofs.close();
+        if (getSigned() == true)
+        {
+            if (executor.getGrade() <= this->getGrade_exec())
+            {
+                std::ofstream ofs(this->_target + "_Shrubbery");
+                ofs<<_fileName;
+                ofs.close();
+                // std::cout <<this->_target<<" is execute\n";
+            }
+            else
+                throw AForm ::GradeTooLowException();
+            return true;
+        }
+        else
+            throw AForm::NotSignedException();        
     }
-    else
-        throw AForm ::GradeTooLowException();
-    
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    return false;
 }

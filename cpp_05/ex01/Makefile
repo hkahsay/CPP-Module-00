@@ -6,7 +6,7 @@
 #    By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 11:11:02 by hkahsay           #+#    #+#              #
-#    Updated: 2023/11/21 11:11:03 by hkahsay          ###   ########.fr        #
+#    Updated: 2023/11/23 13:29:26 by hkahsay          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRCS = main.cpp Bureaucrat.cpp Form.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # Executable name OR target
-NAME = Bureaucrat
+NAME = Form
 
 RM = rm -f
 

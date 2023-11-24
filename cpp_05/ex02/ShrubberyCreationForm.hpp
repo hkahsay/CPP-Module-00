@@ -35,7 +35,7 @@ class ShrubberyCreationForm: public AForm
         ShrubberyCreationForm(ShrubberyCreationForm const &src);
         ShrubberyCreationForm& operator = (ShrubberyCreationForm const &rhs);
         std::string getTarget()const;
-        void execute(Bureaucrat const & executor) const;
+        bool execute(Bureaucrat const & executor) const;
 
 };
 #endif

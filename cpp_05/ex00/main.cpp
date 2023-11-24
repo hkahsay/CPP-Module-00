@@ -6,7 +6,7 @@
 /*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:09:44 by hkahsay           #+#    #+#             */
-/*   Updated: 2023/11/21 11:09:45 by hkahsay          ###   ########.fr       */
+/*   Updated: 2023/11/23 11:28:42 by hkahsay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,19 @@
 
 
 int main() {
-    try {
-        Bureaucrat c("Bob", 100);
-        Bureaucrat b("han", 0);
+   
+    Bureaucrat b("han", 1);
+    std::cout << b << std::endl;
+    Bureaucrat c("Bob", -2);
 
-        std::cout << b << std::endl;
-        std::cout << c << std::endl;
-    }
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-    try {
-    Bureaucrat bureaucrat("Alice", -100);
+    std::cout << c << std::endl;
+    Bureaucrat bureaucrat("Alice", 100);
     std::cout << bureaucrat << std::endl;
     bureaucrat.incrementGrade(); // Incrementing grade from 100 to 99
     std::cout << bureaucrat << std::endl;
     bureaucrat.decrementGrade(); // Decrementing grade from 99 to 100
     std::cout << bureaucrat << std::endl;
-    } catch (const Bureaucrat::GradeTooHighException& e) {
-        std::cerr << e.what() << std::endl;
-    } catch (const Bureaucrat::GradeTooLowException& e) {
-        std::cerr << e.what() << std::endl;
-    } catch (const std::exception& e) {
-        std::cerr << e.what() << std::endl;
-    }
 
-	
     return 0;
 }
 

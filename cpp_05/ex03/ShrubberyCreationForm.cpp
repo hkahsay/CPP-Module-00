@@ -6,7 +6,7 @@
 /*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:11:09 by hkahsay           #+#    #+#             */
-/*   Updated: 2023/11/21 13:13:35 by hkahsay          ###   ########.fr       */
+/*   Updated: 2023/11/23 11:39:11 by hkahsay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,23 @@ ShrubberyCreationForm& ShrubberyCreationForm:: operator= (ShrubberyCreationForm 
 
 void ShrubberyCreationForm:: execute(Bureaucrat const & executor) const
 {
-    if (getSigned() == false )
-        throw AForm::NotSignedException();
-    else if (executor.getGrade() <= this->getGrade_exec())
+    try
     {
-        std::ofstream ofs(this->_target + "_Shrubbery");
-        ofs<<_fileName;
-        ofs.close();
+        if (getSigned() == false )
+            throw AForm::NotSignedException();
+        else if (executor.getGrade() <= this->getGrade_exec())
+        {
+            std::ofstream ofs(this->_target + "_Shrubbery");
+            ofs<<_fileName;
+            ofs.close();
+        }
+        else
+            throw AForm ::GradeTooLowException();
     }
-    else
-        throw AForm ::GradeTooLowException();
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
     
 }

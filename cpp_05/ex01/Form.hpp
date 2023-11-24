@@ -6,7 +6,7 @@
 /*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:10:56 by hkahsay           #+#    #+#             */
-/*   Updated: 2023/11/21 11:10:57 by hkahsay          ###   ########.fr       */
+/*   Updated: 2023/11/23 15:26:50 by hkahsay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ class Form {
 	int getGrade_exec(void) const;
 	void setGrade_sign(int grade);
 	void setGrade_exec(int grade);
-	void beSigned(Bureaucrat &bureaucrat);
+	bool beSigned(Bureaucrat &bureaucrat);
 	class GradeTooHighException: public std::exception {
 		public:
 

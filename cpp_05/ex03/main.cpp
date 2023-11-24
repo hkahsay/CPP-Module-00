@@ -6,7 +6,7 @@
 /*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:11:29 by hkahsay           #+#    #+#             */
-/*   Updated: 2023/11/22 16:28:40 by hkahsay          ###   ########.fr       */
+/*   Updated: 2023/11/23 13:10:56 by hkahsay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ int main( void ) {
 		Bureaucrat	b1("hanniel", 4);
 		// Bureaucrat	b2("hadriel", 3);
 		// Bureaucrat	b3("heaven", 2);
-
+		Intern someRandomIntern;
+		AForm* rrf;
+		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 	
 		Intern		hur;
 		
@@ -44,6 +46,10 @@ int main( void ) {
 		b1.executeForm(*robotomy);
 		std::cout << *robotomy << std::endl;
 		delete robotomy;
+		std::cout<< "--------------test desnot exist----------\n\n";
+		AForm*	none = hur.makeForm("Robotomy", "work");
+
+		delete none;
 
 		std::cout<< "--------------test presidential----------\n\n";
 		AForm*	presidential = hur.makeForm("Presidential Pardon Form", "office");
@@ -53,13 +59,6 @@ int main( void ) {
 		std::cout << *presidential << std::endl;
 		delete presidential;
 		
-		std::cout<< "--------------test desnot exist----------\n\n";
-		AForm*	none = hur.makeForm("Robotomy", "work");
-		std::cout << *none << std::endl;
-		b1.signForm(*none);
-		b1.executeForm(*none);
-		std::cout << *none << std::endl;
-		delete none;
 		
 	} catch (std::exception & e) {
 		std::cout << e.what() << std::endl;

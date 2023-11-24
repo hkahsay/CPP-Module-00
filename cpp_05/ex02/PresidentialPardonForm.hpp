@@ -20,6 +20,6 @@ class PresidentialPardonForm : public AForm
 		std::string getTarget()const;
 		PresidentialPardonForm(PresidentialPardonForm const &src);
 		PresidentialPardonForm& operator = (PresidentialPardonForm const &rhs);
-		void	execute(Bureaucrat const &executor) const;
+		bool	execute(Bureaucrat const &executor) const;
 };
 #endif

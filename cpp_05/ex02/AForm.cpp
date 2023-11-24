@@ -6,7 +6,7 @@
 /*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:11:15 by hkahsay           #+#    #+#             */
-/*   Updated: 2023/11/21 14:46:58 by hkahsay          ###   ########.fr       */
+/*   Updated: 2023/11/23 17:08:39 by hkahsay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,24 @@
 #include "AForm.hpp"
 
 
-AForm:: AForm(): _name("<unnammed>")
+AForm:: AForm(): _name("<unnammed>"), _signed(false), _grade_sign(150), _grade_exec(150)
 {
-    Bureaucrat temp;
-    this->_grade_sign = temp.getGrade();
-    this->_grade_exec = temp.getGrade();
-    std::cout<<"default constructor called" << std::endl;
+  
 }
 
 AForm:: AForm(std::string name, int gradeSign, int gradeExec): _name(name), _grade_sign(gradeSign), _grade_exec(gradeExec)
 {
-    if(gradeSign < 1 || gradeExec < 1)
-        throw AForm:: GradeTooHighException();
-    else if(gradeSign > 150 || gradeExec > 150)
-        throw AForm:: GradeTooLowException();
+    try
+    {
+        if(gradeSign < 1 || gradeExec < 1)
+            throw AForm:: GradeTooHighException();
+        else if(gradeSign > 150 || gradeExec > 150)
+            throw AForm:: GradeTooLowException();  
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
 }
 
 AForm:: ~AForm()
@@ -37,14 +41,8 @@ AForm:: ~AForm()
 
 AForm:: AForm(AForm const & src): _name(src._name), _signed(src.getSigned()), _grade_sign(src.getGrade_sign()), _grade_exec(src.getGrade_exec())
 {
-    if (this->_grade_sign < 1 || this->_grade_exec < 1)
-    {
-        throw AForm:: GradeTooHighException();
-    }
-    else if (this->_grade_sign > 150 || this->_grade_exec > 150)
-    {
-        throw AForm:: GradeTooLowException();
-    }
+    return ;
+    
 }
 
 AForm& AForm::operator = (const AForm& rhs)
@@ -105,24 +103,27 @@ char const*  AForm:: GradeTooLowException:: what() const throw()
 }
 
 std::ostream& operator<< (std:: ostream & o, AForm const& rhs) {
+    o << "Form name: " << rhs.getName()
+    << "Signed: " << (rhs.getSigned() ? "true" : "false") << std::endl;
     o << rhs.getName() << ", AForm grade to sign " << rhs.getGrade_sign() << std::endl;
     o << rhs.getName() << ", AForm grade to execute " << rhs.getGrade_exec() << std::endl;
     return o;
 }
 
-void AForm::beSigned(Bureaucrat &bureaucrat)
+bool AForm::beSigned(Bureaucrat &bureaucrat)
 {
-    if(bureaucrat.getGrade() > this->_grade_sign)
+    if (_signed)
     {
-        std::cout<<" this->_grade_sign "<<this->_grade_sign<<std::endl;
+        std::cout<< this->getName() << " is already signed the form"<<std::endl;
+        return true;
+    }
+    if(this->_grade_sign < bureaucrat.getGrade())
+    {
         throw AForm:: GradeTooLowException();
+
     }
-    else
-    {
-        std::cout<<" this->_grade_sign true: "<<this->_grade_sign<<std::endl;
-        
-        this->_signed = true;
-    }
+    _signed = true;
+    return false;
 }
 
 char const*  AForm:: NotSignedException:: what() const throw()

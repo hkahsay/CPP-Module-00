@@ -6,7 +6,7 @@
 /*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:11:29 by hkahsay           #+#    #+#             */
-/*   Updated: 2023/11/21 17:14:48 by hkahsay          ###   ########.fr       */
+/*   Updated: 2023/11/23 17:37:35 by hkahsay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,52 +19,41 @@
 #include "PresidentialPardonForm.hpp"
 
 int main( void ) {
-	try {
-		Bureaucrat b("Bob",6);
-		// Bureaucrat c("Bob",36);
+
+		Bureaucrat b("Bob",45);
+		Bureaucrat c("lucas",3);
+		Bureaucrat d("tom", 140);
+
 
 		ShrubberyCreationForm f2("home");
-		RobotomyRequestForm f3("home");
+		RobotomyRequestForm f3("office");
 		RobotomyRequestForm f4(f3);
-		PresidentialPardonForm f6("home");
-		// ShrubberyCreationForm f(b.getName());
-		// f2.beSigned(b);
-		f3.beSigned(b);
-		f4.beSigned(b);
-		f6.beSigned(b);
+		PresidentialPardonForm f6("work");
+		PresidentialPardonForm f7("home");
 
-	
+		b.signForm(f2);
 		b.signForm(f2);
 		b.signForm(f3);
 		b.signForm(f4);
+		b.signForm(f6);
+		b.signForm(f7);
 
-		
-		// std::cout <<"f2 \n"<< f2 << std::endl;
-		std::cout << b << std::endl;
 
-		f2.execute(b);
-		f3.execute(b);
-		f4.execute(b);
-		f6.execute(b);
-
-		std::cout <<"f2 :"<< f2 << std::endl;
-
-		std::cout <<"f4 :"<< f4 << std::endl;
-		std::cout <<"f3 :"<< f3 << std::endl;
-		
-
+		// std::cout <<"f2 :"<< f2 << std::endl;
+		// std::cout <<"f4 :"<< f4 << std::endl;
+		// std::cout <<"f3 :"<< f3 << std::endl;
+		// std::cout <<"f6 :"<< f6 << std::endl;
+		// std::cout <<"f7 :"<< f7 << std::endl;
 
 		b.executeForm(f2);
 		b.executeForm(f3);
-		
-		// std::cout <<"f3"<< f3 << std::endl;
+		b.executeForm(f4);
+		b.executeForm(f6);
+		c.executeForm(f7);
 
-		// c.incrementGrade();
-		// b.decrementGrade();
-		// std::cout << c << std::endl;
-	} catch (std::exception & e) {
-		std::cout << e.what() << std::endl;
-	}
+		// b.executeForm(f3);
+	
 	
 	return 0;
 }
+	

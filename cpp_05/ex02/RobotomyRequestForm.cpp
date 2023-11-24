@@ -36,28 +36,41 @@ RobotomyRequestForm& RobotomyRequestForm:: operator=(RobotomyRequestForm const &
 	return *this;
 }
 
-void	RobotomyRequestForm:: execute(Bureaucrat const & executor) const
+bool	RobotomyRequestForm:: execute(Bureaucrat const & executor) const
 {
-	if (this->getSigned() == false)
-		throw	AForm:: NotSignedException();
-	else if (executor.getGrade() <= this->getGrade_exec())
+	try
 	{
-		std::cout<< "vouvouuuuuuu"<<std::endl;
-		srand(time(NULL));
-		int random = rand()%2;
-		if(random != 0)
+		if (this->getSigned() == true)
 		{
-			std::cout<< this->_targetRobotomy<< " has been robotomized "<<
-			"successfully"
-			<<std::endl;
+			if (executor.getGrade() <= this->getGrade_exec())
+			{
+				std::cout<<"executor.getGrade(): "<<executor.getGrade()<<"  this->getGrade_exec(): "<<this->getGrade_exec()<<std::endl;
+				srand(time(NULL));
+				int random = rand()%2;
+				if(random != 0)
+				{
+					std::cout<< "vouvouuuuuuu"<<std::endl;
+					std::cout<< this->_targetRobotomy<< " has been robotomized "<<
+					"successfully"
+					<<std::endl;
+
+				}
+				else
+					std::cout <<"Robotomized is failed"<<std::endl;
+				return true;
+			}
+			else
+				throw AForm ::GradeTooLowException();
 
 		}
 		else
-			std::cout <<"Robotomized is failed"<<std::endl;
+			throw	AForm:: NotSignedException();
 	}
-	else
-		throw AForm ::GradeTooLowException();
-	
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	return false;
 	
 }
 
