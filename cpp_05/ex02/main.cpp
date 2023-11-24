@@ -6,7 +6,7 @@
 /*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:11:29 by hkahsay           #+#    #+#             */
-/*   Updated: 2023/11/23 17:37:35 by hkahsay          ###   ########.fr       */
+/*   Updated: 2023/11/24 11:37:18 by hkahsay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 int main( void ) {
 
-		Bureaucrat b("Bob",45);
+		Bureaucrat b("Bob",4);
 		Bureaucrat c("lucas",3);
 		Bureaucrat d("tom", 140);
 
