@@ -6,7 +6,7 @@
 /*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:11:25 by hkahsay           #+#    #+#             */
-/*   Updated: 2023/11/21 15:11:58 by hkahsay          ###   ########.fr       */
+/*   Updated: 2023/11/27 12:32:02 by hkahsay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Bureaucrat {
 
 	private:
 
-	std::string _name;
+	const std::string _name;
 	int _grade;
 
 	public:

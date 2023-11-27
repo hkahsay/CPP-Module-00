@@ -44,11 +44,11 @@ void	RobotomyRequestForm:: execute(Bureaucrat const & executor) const
 			throw	AForm:: NotSignedException();
 		else if (executor.getGrade() <= this->getGrade_exec())
 		{
-			std::cout<< "vouvouuuuuuu"<<std::endl;
 			srand(time(NULL));
 			int random = rand()%2;
 			if(random != 0)
 			{
+				std::cout<< "vouvouuuuuuu"<<std::endl;
 				std::cout<< this->_targetRobotomy<< " has been robotomized "<<
 				"successfully"
 				<<std::endl;

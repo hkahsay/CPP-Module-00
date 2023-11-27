@@ -6,7 +6,7 @@
 /*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:10:59 by hkahsay           #+#    #+#             */
-/*   Updated: 2023/11/23 17:32:51 by hkahsay          ###   ########.fr       */
+/*   Updated: 2023/11/27 12:20:08 by hkahsay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,27 +46,61 @@
 // 	return a + 1;
 // }
 
+
+// int	main( void )
+// {
+	
+// 	Bureaucrat bur("Bob", 149);
+
+// 	Bureaucrat bur1("Tom", 1);
+// 	Bureaucrat bur2("Robert", 50);
+// 	Bureaucrat bur4(bur);
+// 	std::cout << bur4 << std::endl;
+
+// 	Form obj("Objet", 50, 0);
+// 	Form service("Service", 151, 140);
+
+// 	Form com("commande", 50, 30);
+// 	Form nett("Nettoyage", 150, 51);
+// 	bur.signForm(com);
+// 	std::cout << com  << std::endl;
+// 	bur1.signForm(com);
+// 	bur2.signForm(com);
+
+// 	bur.signForm(nett);
+// 	bur2.signForm(nett);
+
+// 	Form my_copy(com);
+// 	std::cout << my_copy << std::endl;
+// 	return 0;
+// }
+
+
 int main( void ) {
 
 		Bureaucrat b("Bob", 10);
-		Bureaucrat c("paul", 100);
-		Form f("Form 1", 100, 50);
-		Form f1("Form 2", 100, 50);
+		Bureaucrat c("paul", 150);
+		Bureaucrat bf("paul", 151);
+		Bureaucrat d("lucas", 0);
+		Bureaucrat e("hann", 20);
 
-		// Form g("Bob from form", -100, 50);
 
-		// f.beSigned(b);
-		b.decrementGrade();
-		c.incrementGrade();
+		Form f("f", 100, 0);
+		Form f1("f1", 151, 50);
+		Form f2("f2", 150, 50);
+		Form f3("f3", 10, 50);
+
+
 		b.signForm(f);
-		b.signForm(f1);
-
-		c.signForm(f);
+		e.signForm(f);
+		e.signForm(f3);
+		b.signForm(f3);
+		c.signForm(f2);
 		std::cout << b << std::endl;
+		std::cout << e << std::endl;
 		std::cout << f << std::endl;
-		std::cout << c << std::endl;
-		std::cout << f << std::endl;
-	
+		std::cout << f2 << std::endl;
+		std::cout << f3 << std::endl;
 	
 	return 0;
 }

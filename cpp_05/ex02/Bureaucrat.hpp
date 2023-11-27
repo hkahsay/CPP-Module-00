@@ -6,7 +6,7 @@
 /*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:11:25 by hkahsay           #+#    #+#             */
-/*   Updated: 2023/11/21 15:11:58 by hkahsay          ###   ########.fr       */
+/*   Updated: 2023/11/27 12:29:55 by hkahsay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Bureaucrat {
 
 	private:
 
-	std::string _name;
+	const std::string _name;
 	int _grade;
 
 	public:
@@ -37,7 +37,6 @@ class Bureaucrat {
 	Bureaucrat(Bureaucrat const & src);
 	Bureaucrat& operator = (const Bureaucrat& rhs);
 	std::string getName(void) const;
-	void setName(std::string name);
 	int getGrade(void) const;
 	void setGrade(int grade);
 	void incrementGrade(void);

@@ -6,7 +6,7 @@
 /*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:11:15 by hkahsay           #+#    #+#             */
-/*   Updated: 2023/11/23 16:56:13 by hkahsay          ###   ########.fr       */
+/*   Updated: 2023/11/27 12:33:13 by hkahsay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,7 @@ AForm:: AForm(AForm const & src): _name(src._name), _signed(src.getSigned()), _g
 AForm& AForm::operator = (const AForm& rhs)
 {
     if (this != &rhs)
-    {
-        this->_name = rhs.getName();
         this->_signed = rhs.getSigned();
-        this->_grade_sign = rhs.getGrade_sign();
-        this->_grade_exec = rhs.getGrade_exec();
-    }
     return *this;
 }
 
@@ -75,21 +70,6 @@ int AForm::getGrade_sign(void) const
 int AForm::getGrade_exec(void) const
 {
     return this->_grade_exec;
-}
-
-void AForm::setName(std::string name)
-{
-    this->_name = name;
-}
-
-void AForm::setGrade_sign(int grade)
-{
-    this->_grade_sign = grade;
-}
-
-void AForm::setGrade_exec(int grade)
-{
-    this->_grade_exec = grade;
 }
 
 char const*  AForm:: GradeTooHighException:: what() const throw()

@@ -6,7 +6,7 @@
 /*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:11:29 by hkahsay           #+#    #+#             */
-/*   Updated: 2023/11/24 11:37:18 by hkahsay          ###   ########.fr       */
+/*   Updated: 2023/11/27 12:43:15 by hkahsay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,18 @@ int main( void ) {
 		b.signForm(f7);
 
 
-		// std::cout <<"f2 :"<< f2 << std::endl;
-		// std::cout <<"f4 :"<< f4 << std::endl;
-		// std::cout <<"f3 :"<< f3 << std::endl;
-		// std::cout <<"f6 :"<< f6 << std::endl;
-		// std::cout <<"f7 :"<< f7 << std::endl;
+		std::cout <<"f2 :"<< f2 << std::endl;
+		std::cout <<"f4 :"<< f4 << std::endl;
+		std::cout <<"f3 :"<< f3 << std::endl;
+		std::cout <<"f6 :"<< f6 << std::endl;
+		std::cout <<"f7 :"<< f7 << std::endl;
 
 		b.executeForm(f2);
 		b.executeForm(f3);
 		b.executeForm(f4);
 		b.executeForm(f6);
 		c.executeForm(f7);
+
 
 		// b.executeForm(f3);
 	

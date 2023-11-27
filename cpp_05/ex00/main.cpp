@@ -6,7 +6,7 @@
 /*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:09:44 by hkahsay           #+#    #+#             */
-/*   Updated: 2023/11/23 11:28:42 by hkahsay          ###   ########.fr       */
+/*   Updated: 2023/11/27 11:32:04 by hkahsay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,31 @@
 int main() {
    
     Bureaucrat b("han", 1);
-    std::cout << b << std::endl;
-    Bureaucrat c("Bob", -2);
-
-    std::cout << c << std::endl;
+    Bureaucrat c("Bob", 160);
+    Bureaucrat d("mehari", 0);
     Bureaucrat bureaucrat("Alice", 100);
+    // Bureaucrat bur1("han", 150);
+    Bureaucrat bur2("her", 1);
+    
+    
+    
+    std::cout << b << std::endl;    
+    std::cout << c << std::endl;
+    std::cout << d << std::endl;    
     std::cout << bureaucrat << std::endl;
     bureaucrat.incrementGrade(); // Incrementing grade from 100 to 99
     std::cout << bureaucrat << std::endl;
     bureaucrat.decrementGrade(); // Decrementing grade from 99 to 100
     std::cout << bureaucrat << std::endl;
-
+    // bur1.incrementGrade(); 
+    // std::cout << bur1 << std::endl;
+    bur2.incrementGrade(); 
+    std::cout << bur2 << std::endl;
+    // bur1.decrementGrade(); 
+    // std::cout << bur1 << std::endl;
+    bur2.decrementGrade(); 
+    std::cout << bur2 << std::endl;
+    
     return 0;
 }
 

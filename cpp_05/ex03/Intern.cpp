@@ -6,7 +6,7 @@
 /*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 16:29:28 by hkahsay           #+#    #+#             */
-/*   Updated: 2023/11/23 13:11:10 by hkahsay          ###   ########.fr       */
+/*   Updated: 2023/11/27 15:43:23 by hkahsay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ AForm* Intern:: makeForm(const std::string nameForm, const std::string targetFor
 	AForm* form = NULL;
 	if (nameForm.empty() || targetForm.empty())
 	{
-		throw Intern::FormDoesnotExist();
+		throw Intern::FormIsEmpty();
 	}
 	for (i = 0; i < MAX_NUM; i++)
 	{
@@ -66,6 +66,7 @@ AForm* Intern:: makeForm(const std::string nameForm, const std::string targetFor
 	}
 	try
 	{	
+
 		switch (i)
 		{
 			case (0):
@@ -92,4 +93,9 @@ AForm* Intern:: makeForm(const std::string nameForm, const std::string targetFor
 char const * Intern:: FormDoesnotExist:: what()const throw()
 {
 	return ("Form doesnot exist\n");
+}
+
+char const * Intern:: FormIsEmpty:: what()const throw()
+{
+	return ("the form is empty\n");
 }

@@ -44,7 +44,6 @@ bool	RobotomyRequestForm:: execute(Bureaucrat const & executor) const
 		{
 			if (executor.getGrade() <= this->getGrade_exec())
 			{
-				std::cout<<"executor.getGrade(): "<<executor.getGrade()<<"  this->getGrade_exec(): "<<this->getGrade_exec()<<std::endl;
 				srand(time(NULL));
 				int random = rand()%2;
 				if(random != 0)

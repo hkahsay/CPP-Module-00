@@ -6,7 +6,7 @@
 /*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:11:18 by hkahsay           #+#    #+#             */
-/*   Updated: 2023/11/23 16:56:37 by hkahsay          ###   ########.fr       */
+/*   Updated: 2023/11/27 12:31:31 by hkahsay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ class AForm {
 
 	private:
 
-	std::string _name;
+	const std::string _name;
 	bool _signed;
-	int _grade_sign;
-	int _grade_exec;
+	const int _grade_sign;
+	const int _grade_exec;
 
 	public:
 

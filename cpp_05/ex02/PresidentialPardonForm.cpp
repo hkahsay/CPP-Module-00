@@ -42,7 +42,6 @@ bool	PresidentialPardonForm:: execute(Bureaucrat const & executor) const
 	// if ( _signGrade < executor.getGrade())
 	try
 	{
-		std::cout<< "executor.getGrade(): "<< executor.getGrade()<< " this->getGrade_exec(): "<<this->getGrade_exec()<<std::endl;
 		if (getSigned() == true)
 		{
 			if (executor.getGrade() <= this->getGrade_exec())

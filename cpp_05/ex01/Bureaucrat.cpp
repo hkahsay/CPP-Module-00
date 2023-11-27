@@ -6,7 +6,7 @@
 /*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:10:43 by hkahsay           #+#    #+#             */
-/*   Updated: 2023/11/23 15:57:58 by hkahsay          ###   ########.fr       */
+/*   Updated: 2023/11/27 12:33:26 by hkahsay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,7 @@ Bureaucrat& Bureaucrat::operator = (const Bureaucrat& rhs)
 {
     std::cout<<"Assignment operator called" << std::endl;
     if (this != &rhs)
-    {
-        this->_name = rhs._name;
         this->_grade = rhs._grade;
-    }
     return *this;
 }
 
@@ -65,11 +62,6 @@ std::string Bureaucrat::getName(void) const
 int Bureaucrat::getGrade(void) const
 {
     return this->_grade;
-}
-
-void Bureaucrat::setName(std::string name)
-{
-    this->_name = name;
 }
 
 void Bureaucrat::setGrade(int grade)

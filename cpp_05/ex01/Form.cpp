@@ -6,7 +6,7 @@
 /*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:10:52 by hkahsay           #+#    #+#             */
-/*   Updated: 2023/11/23 17:04:22 by hkahsay          ###   ########.fr       */
+/*   Updated: 2023/11/27 12:33:34 by hkahsay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,7 @@ Form:: Form(Form const & src): _name(src.getName()), _signed(false), _grade_sign
 Form& Form::operator = (const Form& rhs)
 {
     if (this != &rhs)
-    {
-        this->_name = rhs.getName();
-        this->_grade_sign = rhs.getGrade_sign();
-        this->_grade_exec = rhs.getGrade_exec();
         this->_signed = rhs.getSigned();
-    }
     return *this;
 }
 
@@ -77,21 +72,6 @@ int Form::getGrade_exec(void) const
     return this->_grade_exec;
 }
 
-void Form::setName(std::string name)
-{
-    this->_name = name;
-}
-
-void Form::setGrade_sign(int grade)
-{
-    this->_grade_sign = grade;
-}
-
-void Form::setGrade_exec(int grade)
-{
-    this->_grade_exec = grade;
-}
-
 char const*  Form:: GradeTooHighException::what() const throw()
 {
     return "[Form]: Grade too high";
@@ -112,7 +92,7 @@ std::ostream& operator<< (std:: ostream & o, Form const& rhs) {
 
 bool Form::beSigned(Bureaucrat &bureaucrat)
 {
-    if (_signed)
+    if (getSigned())
     {
         std::cout<< this->getName() << " is already signed the form"<<std::endl;
         return true;
