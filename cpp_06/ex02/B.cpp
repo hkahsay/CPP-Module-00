@@ -20,7 +20,3 @@ B::~B()
 {
 }
 
-void B::print()
-{
-    std::cout << "Derived2" <<std:: endl;
-}

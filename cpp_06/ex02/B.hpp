@@ -19,11 +19,9 @@
 
 class B : public Base
 {
-    private:
-    /* data */
+   
     public:
-        B(/* args */);
-        void    print();
+        B();
         ~B();
 };
 

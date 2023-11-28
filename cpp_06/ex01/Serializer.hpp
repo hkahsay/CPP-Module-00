@@ -18,12 +18,33 @@
 #include<stdint.h>
 // #include<cstdint>
 
-struct Data
-{
-    std::string new_ptr;
-};
+    // struct Data
+    // {
+    //     std::string new_ptr;
+    // };
 
-uintptr_t  Serialize(Data *ptr);
-Data* deserialize(uintptr_t raw);
+    // Data* deserialize(uintptr_t raw);
+    // uintptr_t  Serialize(Data *ptr);
+
+
+class Serializer 
+{
+    private:
+    Serializer();
+    public:
+    ~Serializer();
+    Serializer(Serializer const & src);
+    Serializer & operator = (Serializer const & rhs);
+
+    struct Data
+    {
+        std::string new_ptr;
+        int iValue;
+        float fValue;
+        double dValue;
+    };
+    static Data* deserialize(uintptr_t raw);
+    static uintptr_t  Serialize(Data *ptr);
+};
 
 #endif

@@ -13,7 +13,6 @@
 #include "A.hpp"
 #include "B.hpp"
 #include "C.hpp"
-
 // #include<iostream>
 
 Base *generate(void)
@@ -24,7 +23,6 @@ Base *generate(void)
     // std::cout<<"first no: "<<rand()%3<<std::endl;
     srand(static_cast<unsigned>(time(NULL)));
     r = rand() % 3;
-    std::cout<<r<<std::endl;
     if (r == 0)
     {
         return new A();
@@ -96,11 +94,15 @@ void identify(Base& p)
 int main()
 {
     Base *b = generate();
-    std::cout << b <<std::endl;
+    std::cout <<"b "<< b <<std::endl;
     identify(*b);
     identify(b);
+    
     Base    *c = generate();
     identify(c);
-    // std::cout << b <<std::endl;
+    identify(*c);
+
+    
+    return 0;
 
 }
