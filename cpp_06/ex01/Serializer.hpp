@@ -16,25 +16,15 @@
 #include <iostream>
 #include<string>
 #include<stdint.h>
-// #include<cstdint>
-
-    // struct Data
-    // {
-    //     std::string new_ptr;
-    // };
-
-    // Data* deserialize(uintptr_t raw);
-    // uintptr_t  Serialize(Data *ptr);
-
 
 class Serializer 
 {
     private:
-    Serializer();
+        Serializer();
     public:
-    ~Serializer();
-    Serializer(Serializer const & src);
-    Serializer & operator = (Serializer const & rhs);
+        ~Serializer();
+        Serializer(Serializer const & src);
+        Serializer & operator = (Serializer const & rhs);
 
     struct Data
     {

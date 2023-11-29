@@ -12,25 +12,6 @@
 
 #include "Serializer.hpp"
 
-// int main()
-// {
-//     Serializer::Data    *orginal;
-//     Serializer::Data
-
-//     uintptr_t   S;
-
-
-
-//     std::cout << "before serializer: "<< ptr<<std::endl;
-  
-
-//     S = Serializer::Serialize(ptr);
-//     std::cout << "serializer: "<< S<<std::endl;
-//     ptr = Serializer::deserialize(S);
-//     std::cout << "deserializer:"<< ptr<<std::endl;
-
-
-// }
 
 int main() {
     // Create an instance of the Data struct
@@ -53,12 +34,11 @@ int main() {
 
     // Check the deserialized values
     std::cout << "Deserialized Data:" << std::endl;
-    std::cout << "new_ptr: " << deserializedData->new_ptr << std::endl;
+    std::cout << "new_ptr: "<< deserializedData->new_ptr << std::endl;
     std::cout << "iValue: " << deserializedData->iValue << std::endl;
     std::cout << "fValue: " << deserializedData->fValue << std::endl;
     std::cout << "dValue: " << deserializedData->dValue << std::endl;
 
-    // Clean up memory if needed
 
     return 0;
 }

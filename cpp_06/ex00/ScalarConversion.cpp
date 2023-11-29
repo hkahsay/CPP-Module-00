@@ -79,8 +79,6 @@ bool ScalarConverter::isChar(std::string input)
         {
             return true;
         }
-        // else
-        //     std::cout << "char is not displayable" << std::endl;
     }   
     return false;
 }
@@ -94,11 +92,12 @@ void ScalarConverter::convertChar(std::string str)
     std::cout << "float: ";
     print_float(str[0]);
     std::cout << std::endl;
-    std::cout << "double: " << d << std::endl;
+    std::cout << "double: ";
+    print_double(d);
+    std::cout<< std::endl;
 }
 
 
-//  inff", "+inff", "nanf", "-inf", "+inf", "nan
 bool ScalarConverter::isInt(std::string input)
 {
     size_t len = input.length();

@@ -16,8 +16,7 @@
 #include<cstdlib>
 #include<ctime>
 #include<iostream>
-// #include"A.hpp"
-// #include"B.hpp"
+
 
 class Base
 {
