@@ -6,7 +6,7 @@
 /*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:25:20 by hkahsay           #+#    #+#             */
-/*   Updated: 2023/11/21 11:27:50 by hkahsay          ###   ########.fr       */
+/*   Updated: 2023/11/29 14:17:54 by hkahsay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ T& Array<T>:: operator[](unsigned int index)
     if (index >= 0 && index < _n)
     {
         return _myArray[index];
-        /* code */
     }
  	throw std::out_of_range("the index is out of range");
 
