@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mac <mac@student.42.fr>                    +#+  +:+       +#+         #
+#    By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 11:24:52 by hkahsay           #+#    #+#              #
-#    Updated: 2023/12/03 00:02:08 by mac              ###   ########.fr        #
+#    Updated: 2023/12/04 15:14:57 by hkahsay          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # Executable name OR target
-NAME = templatePractice
+NAME = STL
 
 RM = rm -f
 
