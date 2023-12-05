@@ -6,7 +6,7 @@
 #    By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 11:25:09 by hkahsay           #+#    #+#              #
-#    Updated: 2023/11/21 11:25:10 by hkahsay          ###   ########.fr        #
+#    Updated: 2023/12/05 12:45:25 by hkahsay          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,13 @@ CC = g++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 # Source files
-SRCS = main.cpp
+SRCS = main.cpp Span.cpp
 
 # Object files 
 OBJS = $(SRCS:.cpp=.o)
 
 # Executable name OR target
-NAME = iter
+NAME = Span
 
 RM = rm -f
 
