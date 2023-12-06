@@ -6,7 +6,7 @@
 #    By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 11:25:09 by hkahsay           #+#    #+#              #
-#    Updated: 2023/12/05 12:45:25 by hkahsay          ###   ########.fr        #
+#    Updated: 2023/12/06 15:31:42 by hkahsay          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,7 @@ CC = g++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 # Source files
-SRCS = main.cpp Span.cpp
-
+SRCS = main.cpp Span.cpp test.cpp
 # Object files 
 OBJS = $(SRCS:.cpp=.o)
 
