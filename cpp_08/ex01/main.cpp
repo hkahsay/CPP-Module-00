@@ -2,15 +2,37 @@
 
 int main()
 {
-	Span sp(5);
+	int n = 5;
 
-	int	arr[] = {8, 9, 6, 2, 3, 4};
-	std::vector<int> newsetcontainer(arr, arr + sizeof (arr) / sizeof(arr[0]));
-	sp.addNumbers(newsetcontainer);
-	// sp.print();
-	std::cout<<sp << std::endl;
-	// sp.longestSpan();
-	std::cout<< sp.longestSpan() << std::endl;
+	Span sp(n);
+	std::vector<int> numbers;
+	
+	try{
+
+		sp.addNumbers(numbers.begin(), numbers.end());
+	}
+	
+	catch(Span::spanFullException e)
+	{
+		std::cout<< RED"Well... there was a problem; the Span is full!"RESET << std::endl;
+		
+	}
+	sp.addNumber(34);
+	sp.addNumber(4);
+	std::cout << sp << std::endl;
+
+    try {
+		std::cout<< YELLOW"longestSpan: "<< sp.longestSpan()<<" "<<RESET << std::endl;
+
+	} catch(Span::spanIsEmptyException e) {
+		std::cout<< "Well... there was a problem; the Span is empty!" << std::endl;
+	}
+	try {
+		std::cout<< BLUE"shortestSpan: "<< sp.shortestSpan()<<" "RESET << std::endl;
+
+	} catch(Span::spanIsEmptyException e) {
+		std::cout<< "Well... there was a problem; the Span is empty!" << std::endl;
+	}
 
 
 	return 0;

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+         #
+#    By: mac <mac@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 11:25:09 by hkahsay           #+#    #+#              #
-#    Updated: 2023/12/06 15:31:42 by hkahsay          ###   ########.fr        #
+#    Updated: 2023/12/07 17:52:00 by mac              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,10 @@ CC = g++
 # Compiler flags
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
+HEADERS = Span.hpp
+
 # Source files
-SRCS = main.cpp Span.cpp test.cpp
+SRCS = Span.cpp test.cpp main.cpp
 # Object files 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -30,7 +32,7 @@ RM = rm -f
 all: $(NAME)
 
 # Rule to compile .cpp files into object files
-%.o: %.cpp
+%.o: %.cpp $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Rule to link the object files into the final executable

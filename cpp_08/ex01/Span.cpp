@@ -1,9 +1,4 @@
 #include"Span.hpp"
-// Span:: Span(size_t size): _container(size)
-// {
-
-// }
-
 
 Span:: Span(): _maxNum(0)
 {
@@ -13,7 +8,7 @@ Span:: Span(): _maxNum(0)
 }
 Span:: ~Span()
 {
-	std::cout<<"default destructor"<<std::endl;
+	//std::cout<<"default destructor"<<std::endl;
 	return ;
 
 
@@ -21,11 +16,12 @@ Span:: ~Span()
 
 Span:: Span(unsigned int N): _maxNum(N)
 {
+	_container.reserve(N);
 	return ;
 }
 
 
-Span:: Span(Span const &src)
+Span:: Span(Span const &src): _maxNum(src._maxNum),_container(src.getContainer())
 {
 	*this = src;
 	return ;
@@ -36,11 +32,10 @@ Span & Span::operator=(Span const & rhs)
 {
 	if (this != &rhs)
 	{
-		// for (size_t i = 0; i < _maxNum; i++)
-		// {
-			_maxNum = rhs._maxNum;
-			_container = rhs.getContainer();
-		// }
+		for (size_t i = 0; i < rhs.getMaxNum(); i++)
+		{
+			this->_container[i] = rhs._container[i];
+		}
 		
 	}
 	return *this;
@@ -58,8 +53,18 @@ unsigned int Span:: getMaxNum() const
 
 void	Span:: addNumber(unsigned int toBeAdd)
 {
-	_container.push_back(toBeAdd);	
+	try
+	{
+		if (!_container.empty() && _maxNum < _container.size()) throw Span::spanFullException();
+		_container.push_back(toBeAdd);	
+	}
+	catch(Span:: spanFullException e)
+	{
+		std::cout<< RED"Well... there was a problem; the Span is full"RESET << std::endl;
+	}
+	
 }
+
 void	Span::setContainer(std::vector<int> setcont)
 {
 	_container = setcont;
@@ -70,6 +75,8 @@ void	Span::setContainer(std::vector<int> setcont)
 // 	_container.insert(_container.end(), nums);
 
 // }
+
+/*
 void	Span::addNumbers(std::vector<int> addnum)
 {
 	for (size_t i = 0; i < addnum.size(); i++)
@@ -77,6 +84,7 @@ void	Span::addNumbers(std::vector<int> addnum)
 		_container.push_back(addnum[i]);
 	}
 }
+*/
 
 void Span::displaycontainer(std::ostream& os)const
 {
@@ -90,33 +98,36 @@ void Span::displaycontainer(std::ostream& os)const
 
 int	Span::longestSpan()//std::vector<int> longspan
 {
-	if(!_container.empty())
-	{
-		std::vector<int>::iterator it = std::max_element(_container.begin(), _container.end());
-		std::vector<int>::iterator ite = std::min_element(_container.begin(), _container.end());
-		if (it != _container.end() && ite != _container.end())
-		{
-			int	difference = *it - *ite;
-			std::cout<<"max_value: "<<*it<<std::endl;
-			std::cout<<"min_value: "<<*ite<<std::endl;
-			std::cout<<"longestspan: "<<difference<<std::endl;
-			return difference;
-		}
-		else
-			std::cout<<"error finding min / max element"<<std::endl;
 
+	if(_container.empty()) throw spanIsEmptyException();
+
+	std::vector<int>::iterator it = std::max_element(_container.begin(), _container.end());
+	std::vector<int>::iterator ite = std::min_element(_container.begin(), _container.end());
+	if (it != _container.end() && ite != _container.end())
+	{
+		int	difference = *it - *ite;
+		// std::cout<<"max_value: "<<*it<<std::endl;
+		// std::cout<<"min_value: "<<*ite<<std::endl;
+		// std::cout<<"longestspan: "<<difference<<std::endl;
+		return difference;
 	}
-		
-	else
-		std::cout<<"there is no elements in the container"<<std::endl;
-	return 0;
+	else {
+		//std::cout<<"error finding min / max element"<<std::endl;
+		return 0;
+	}
 }
 
+int Span:: shortestSpan()
+{
+	if(_container.empty()) throw spanIsEmptyException();
 
-// void Span:: shortestSpan()
-// {
-
-// }
+	std::sort(_container.begin(),_container.end());
+	// std :: adjacent_difference using custom function
+	std::vector<int>	difference (_container.size() - 1);
+    std::adjacent_difference(_container.begin(),_container.end(), difference.begin());
+	std::vector<int>::iterator it = std::min_element(difference.begin(), difference.end());
+    return *it;
+}
 
 std::ostream& operator<<(std::ostream& os, Span const& rhs)
 {
@@ -124,4 +135,14 @@ std::ostream& operator<<(std::ostream& os, Span const& rhs)
 	rhs.displaycontainer(os);
 	
 	return os;
+}
+
+char const * Span::spanIsEmptyException::what() const throw()
+{
+	return RED"Span is empty"RESET;
+}
+
+char const * Span::spanFullException::what() const throw()
+{
+	return RED"The span is full"RESET;
 }
