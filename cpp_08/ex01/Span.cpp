@@ -55,7 +55,7 @@ void	Span:: addNumber(unsigned int toBeAdd)
 {
 	try
 	{
-		if (!_container.empty() && _maxNum < _container.size()) throw Span::spanFullException();
+		if (_maxNum <= _container.size()) throw Span::spanFullException();
 		_container.push_back(toBeAdd);	
 	}
 	catch(Span:: spanFullException e)
@@ -106,13 +106,9 @@ int	Span::longestSpan()//std::vector<int> longspan
 	if (it != _container.end() && ite != _container.end())
 	{
 		int	difference = *it - *ite;
-		// std::cout<<"max_value: "<<*it<<std::endl;
-		// std::cout<<"min_value: "<<*ite<<std::endl;
-		// std::cout<<"longestspan: "<<difference<<std::endl;
 		return difference;
 	}
 	else {
-		//std::cout<<"error finding min / max element"<<std::endl;
 		return 0;
 	}
 }

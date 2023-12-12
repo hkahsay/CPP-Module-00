@@ -6,7 +6,7 @@
 /*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:47:49 by hkahsay           #+#    #+#             */
-/*   Updated: 2023/12/12 14:11:36 by hkahsay          ###   ########.fr       */
+/*   Updated: 2023/12/12 15:34:34 by hkahsay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include<iostream>
 #include<iterator>
 #include<stack>
+#include<list>
 
 template<typename T>
 class MutantStack : public std::stack<T>
@@ -28,11 +29,7 @@ class MutantStack : public std::stack<T>
         MutantStack(MutantStack const & src):std::stack<T>(src){ *this = src;}
         // MutantStack& operator= (MutantStack const & rhs)
         // {
-        //     if  (this != &rhs)
-        //     {
-        //         this->c = c.rhs;
-        //     }
-        //     return *this;
+           
         // }
 
         iterator begin()
@@ -54,22 +51,5 @@ class MutantStack : public std::stack<T>
         }
         
 };
-// std::ostream & operator<<(std::ostream &os, MutantStack const & rhs)
-// {
-//     return os;
-// }
-#endif
-//  class myIterator
-//         {
-//             private:
-//                 std::stack<int>::myIterator   _begin;
-//                 std::stack<int>::myIterator   _end;
-//             public:
-//                 myIterator();
-//                 ~myIterator();
-//                 myIterator(int begin, int end);
-//                 myIterator(const myIterator & src);
-//                 myIterator & operator= (const myIterator & rhs);
-//                 bool    operator ==(const myIterator & rhs)const;
 
-//         };
+#endif

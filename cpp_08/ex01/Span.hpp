@@ -73,7 +73,7 @@ void Span::addNumbers(Iterator begin, Iterator end)
 		int randomnum = dist6(randNumGenerator);
 		_container.push_back(randomnum);//rand()
 	}
-	if (!_container.empty() && _container.size() > this->getMaxNum()) throw Span::spanFullException();
+	if (_container.size() > this->getMaxNum()) throw Span::spanFullException();
 
 	_container.insert(_container.end(), begin, end);
 	
