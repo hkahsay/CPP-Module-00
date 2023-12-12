@@ -1,0 +1,24 @@
+ex02 notes
+
+    typedef typename std::stack<T>::container_type::iterator iterator;
+
+        std::stack<T>: This is a template class in the C++ Standard Library representing a stack. 
+		It is parameterized by type T, meaning it can hold elements of type T.
+
+        container_type: std::stack uses a container internally to hold its elements. 
+		The container_type is a nested typedef within std::stack that represents the type of the underlying container.
+		For example, if you use the default template argument for std::stack (which is std::deque<T>), then container_type would be std::deque<T>.
+
+        iterator: This is the iterator type of the underlying container. It is a typedef within the container_type.
+
+        typedef typename std::stack<T>::container_type::iterator iterator;
+		This line declares a new type iterator within the scope of the MutantStack class. It is an iterator for the underlying container of std::stack<T>.
+    	typedef typename std::stack<T>::container_type::const_iterator const_iterator;
+        Similar to the first line, this line declares a new type const_iterator within the scope of the MutantStack class.
+
+        However, in this case, it is the const_iterator type of the underlying container. 
+		It means that this iterator can be used to iterate over the elements of the container, but the elements themselves cannot be modified.
+
+The typename keyword is used here to indicate that std::stack<T>::container_type::iterator 
+and std::stack<T>::container_type::const_iterator are types, as opposed to static members or values. 
+In templates, the typename keyword is often required to specify that a dependent name is a type.
