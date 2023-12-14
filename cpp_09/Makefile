@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mac <mac@student.42.fr>                    +#+  +:+       +#+         #
+#    By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 11:24:52 by hkahsay           #+#    #+#              #
-#    Updated: 2023/12/13 11:10:28 by mac              ###   ########.fr        #
+#    Updated: 2023/12/14 14:59:43 by hkahsay          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Compiler
-CC = g++
+CC = c++
 
 # Compiler flags
 CFLAGS = -std=c++98 -Wall -Wextra -Werror

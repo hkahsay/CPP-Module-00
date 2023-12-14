@@ -1,5 +1,6 @@
 #include<iostream>
 #include<fstream>
+#include<map>
 /*
 int main(int argc, char **argv)
 {
@@ -47,26 +48,28 @@ int main(int argc, char **argv)
   return 0;
 }*/
 
-
+void  print_map(std::string_view comment, const std::map<std::string, int> &m)
+{
+  std::cout<<comment;
+  for (std::map<std::string, int>::const_iterator  it = m.begin() ; it != m.end(); it++)
+  {
+    std::cout<<it->first<< " = "<< it->second<< ";"<<std::endl;
+  }
+  
+}
 
 int main (int ac, char **av) {
     if (ac == 2)
     {
         std::ofstream myfile (av[1]);
         std::ifstream dataBase("data.csv");
+
         // std::cout<<dataBase<<std::endl;
         bool isopen = myfile.is_open();
         if(isopen)
         {
             myfile << "Writing this to a file.\n";
-            myfile << "Writing this to a file.\n";
             myfile << "here is my file.\n";
-            // if (inputformat)
-            // {
-            //     /* code */
-            // }
-            
-
         }
         else
             std::cerr<<"Error: Unable to open file"<<std::endl;
