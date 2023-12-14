@@ -48,21 +48,19 @@ int main(int argc, char **argv)
 }*/
 
 
-using namespace std;
-// int inputFormat()
-// {
 
-// }
 int main (int ac, char **av) {
     if (ac == 2)
     {
-        ofstream myfile (av[1]);
+        std::ofstream myfile (av[1]);
+        std::ifstream dataBase("data.csv");
+        // std::cout<<dataBase<<std::endl;
         bool isopen = myfile.is_open();
-        if(isopen == true)
+        if(isopen)
         {
             myfile << "Writing this to a file.\n";
             myfile << "Writing this to a file.\n";
-            myfile << "Writing this to a file.\n";
+            myfile << "here is my file.\n";
             // if (inputformat)
             // {
             //     /* code */
@@ -70,8 +68,6 @@ int main (int ac, char **av) {
             
 
         }
-        // myfile.open (av[1]);
-
         else
             std::cerr<<"Error: Unable to open file"<<std::endl;
 
