@@ -7,13 +7,14 @@
 #include<sstream>
 #include <string>
 #include <algorithm>
+#include<cstdlib>
 // #include<ifstream>
 #include<map>
 
 class BitcoinExchange
 {
 	private:
-		std:: map<std:: string, int> data_map;
+		std:: map<std:: string, float> data_map;
 		// double values;
 	public:
 		BitcoinExchange();
@@ -22,6 +23,10 @@ class BitcoinExchange
 		BitcoinExchange& operator =(BitcoinExchange const & rhs);
 		~BitcoinExchange();
 		void parseinput(const std::string input);
+		void	printDataMap()const;
+		bool	check_input(std::string inputstrm);
+
+
 
 };
 

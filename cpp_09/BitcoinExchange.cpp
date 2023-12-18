@@ -4,73 +4,118 @@ BitcoinExchange::BitcoinExchange(/* args */)
 {
 }
 
+void	BitcoinExchange::printDataMap()const
+{
+	std::map<std::string, float>::const_iterator it;
+	std::map<std::string, float>::const_iterator ite = data_map.end();
+	for (it = data_map.begin(); it != ite; it++)
+	{
+		std::cout << "Date: " << it->first << ", Rate: " << it->second << std::endl;
+	}
+
+}
+
+
 BitcoinExchange::BitcoinExchange(const std::string data, const std::string inputFile)
 {
 	// (void)inputFile;
 	std::ifstream database(data);
 	if (!database.is_open())
+	{
 		std::cout<<"Error: unable to open the file"<<std::endl;
-	
+		return;
+	}
 	std::string	dataline;
 	getline(database, dataline);//this is to ignore header
 	while(getline(database, dataline))
 	{
-			std::cout<<"dataline: "<<dataline<<std::endl;
-			std::istringstream strm(dataline);
-			std::string date;
-			std::string rate_int_part;
-			std::string rate_decimal_part;
-		if (getline(strm, date, ',') && getline(strm, rate_int_part, '.') && strm >> rate_decimal_part)
-		{
-				std::cout<<"date: "<<date<<std::endl;
-				std::cout<<"rate_int_part: "<<rate_int_part<<std::endl;
-				std::cout<<"rate_decimal_part: "<<rate_decimal_part<<std::endl;
-				int rate_value = std::stoi(rate_int_part) * 100 + std::stoi(rate_decimal_part);
-				std::cout<<"rate_value: "<<rate_value<<std::endl;
-				std::cout<<(rate_value/100)<<"."<<(rate_value%100)<<std::endl;
+			// std::cout<<"dataline: "<<dataline<<std::endl;
 
-				data_map[date] = rate_value;
+			// std::string date(dataline, 0, 10);
+			std::string date;
+			float rate;
+			std::istringstream strm(dataline); //(dataline.substr(11, dataline.size() - 1)) >> rate;
+		if (getline(strm, date, ',') && strm >> rate)
+		{
+			std::cout<<std::fixed<<std::setprecision(2);
+			data_map[date] = rate;
+			// std::cout<<"date: "<<date<<std::endl;
+			// // std::cout<<"rate: "<<rate<<std::endl;
 
 		}
 	}
+	// printDataMap();
 	
 	parseinput(inputFile);
 	database.close();
 }
+                           
+// void BitcoinExchange::parseinput(const std::string input)
+// {
+// 	std::ifstream inputFile(input);
+// 	if(inputFile.is_open())
+// 	{
+// 		std::string expectedFormat = "date | value";
+// 		std::string inputline;
+// 		if (getline(inputFile, inputline) && inputline.compare(0, expectedFormat.length(), expectedFormat) == 0)
+// 		{
+// 			std::string inputDate;
+// 			std::string value;
+// 			double	result;
+//             size_t valueStart = value.find_first_not_of(" \t");
+//             size_t valueEnd = value.find_last_not_of(" \t");
+// 			while (getline(inputFile, inputline))
+// 			{
+// 				inputDate = inputline.substr(0, 10);
+// 				if(inputline.length() >= 11)
+// 				{
+// 					size_t pos = inputline.find('|');
+// 					value = inputline.substr(pos + 1);
 
-void BitcoinExchange::parseinput(const std::string input)
-{
-	std::ifstream inputFile(input);
-		bool isopen = inputFile.is_open();
-		std::string inputline;
-        if(isopen)
-        {
-			while (getline(inputFile, inputline))
-			{
+// 					// if (pos != std::string::npos)
+// 					// {
+// 						value = inputline.substr(valueStart, valueEnd - valueStart + 1);
+// 						std::cout<<"inputDate: "<<inputDate<<" value: "<<value<<std::endl;
+// 						// try
+// 						// {
+// 							result = std::stod(value);
+// 							std::cout << "inputDate: " << inputDate << " value: " << value << std::endl;
+// 							std::cout << "result: " << result << std::endl;
+// 						// }
+// 						// catch (const std::invalid_argument& e)
+// 						// {
+// 						// 	std::cerr << "Error: Invalid argument in converting value: " << e.what() << std::endl;
+// 						// }
+// 						// catch (const std::out_of_range& e)
+// 						// {
+// 						// 	std::cerr << "Error: Out of range in converting value: " << e.what() << std::endl;
+// 						// }
+// 					// }
+// 				}
+// 			}
+// 		}
+// 		else
+//             std::cerr << "Error: The first line does not match the expected format." << std::endl;
+// 	}
+// 	else
+// 		std::cerr<<"Error: Unable to open fileee"<<std::endl;
+// 	inputFile.close();
+// }
 
-				// int len = inputline.length();
-				// std::stringstream strm(inputline);
-				// std::cout<<inputline<<std::endl;
-				//std::string date = inputline.substr(0, 10);
-				//std::string spacebtween = inputline.substr(11, 12);
-				//std::string value = inputline.substr(13, inputline.length());
-				// std::cout<<"len: "<<len<<std::endl;
-				// if (getline(inputFile,strm))
-				// {
-
-				// }
-			}
-        }
-        else
-            std::cerr<<"Error: Unable to open file"<<std::endl;
-        inputFile.close();
-
-}
 BitcoinExchange::~BitcoinExchange()
 {
 }
 
+// bool	BitcoinExchange::check_input(std::string inputstrm)
+// {
+// 	if(inputstrm)
+// 	{
+// 		return true;
+// 	}
+// 	else
+// 		return false;
 
+// }
 
 BitcoinExchange::BitcoinExchange(BitcoinExchange const & src)
 {

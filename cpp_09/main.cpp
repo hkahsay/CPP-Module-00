@@ -60,10 +60,10 @@ int main (int ac, char **av) {
     if (ac == 2)
     {
         // std::ofstream myfile (av[1]);
-        std::ifstream dataBase("data_test.csv");
-std::cerr<<"Error: Unable to open file"<<std::endl;
+        // std::ifstream dataBase("data.csv");
+        // std::cerr<<"Error: Unable to open file"<<std::endl;
 
-        BitcoinExchange btc("data_test.csv", av[1]);
+        BitcoinExchange btc("data.csv", av[1]);
         
         // myfile.close();
 
