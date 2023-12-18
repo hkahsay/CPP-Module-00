@@ -1,6 +1,4 @@
-#include<iostream>
-#include<fstream>
-#include<map>
+#include"BitcoinExchange.hpp"
 /*
 int main(int argc, char **argv)
 {
@@ -61,20 +59,14 @@ void  print_map(std::string_view comment, const std::map<std::string, int> &m)
 int main (int ac, char **av) {
     if (ac == 2)
     {
-        std::ofstream myfile (av[1]);
-        std::ifstream dataBase("data.csv");
+        // std::ofstream myfile (av[1]);
+        std::ifstream dataBase("data_test.csv");
+std::cerr<<"Error: Unable to open file"<<std::endl;
 
-        // std::cout<<dataBase<<std::endl;
-        bool isopen = myfile.is_open();
-        if(isopen)
-        {
-            myfile << "Writing this to a file.\n";
-            myfile << "here is my file.\n";
-        }
-        else
-            std::cerr<<"Error: Unable to open file"<<std::endl;
+        BitcoinExchange btc("data_test.csv", av[1]);
+        
+        // myfile.close();
 
-        myfile.close();
        
     }
     else
