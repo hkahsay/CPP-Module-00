@@ -69,6 +69,80 @@ void	BitcoinExchange::printDataMap()const
 	}
 
 }
+
+// bool	BitcoinExchange::checkDate(std::string &inputdate)const
+// {
+// 	std::string year, month, day;
+// 	if (inputdate.length() == 10)
+// 	{
+// 		year = inputdate.substr(0, 4);
+// 		month = inputdate.substr(5, 2);
+// 		day = inputdate.substr(8, 2);
+// 		if (year < '2009' )
+// 			return false;
+// 		if (year > '2022') && month > '03')
+// 			return false;
+// 		if (day == '31' && (month == '4' || month == '2' || month == '6' || month == '9' || month == '11'))
+// 		{
+// 			// std:: cout << "Wrong date2" << std:: endl;
+// 			return false;
+// 		}
+// 		if (month == '2' && day == '30')
+// 		{
+// 			// std:: cout << "Wrong date3" << std:: endl;
+// 			return false;
+// 		}
+// 		if(month = 02 && day == 29 && year % 4 != 0)
+// 			return false;
+// 		std::cout<<"year: "<<year<<" month: "<<month<<" day: "<<day<<std::endl;
+// 		return true;
+// 	}
+// 	else
+// 		std::cerr<<"Error: bad input date format."<<inputdate<<std::endl;
+// 	return false;
+// }
+
+
+
+
+bool BitcoinExchange::checkDate(const std::string& inputdate) const
+{
+    std::string year, month, day;
+    if (inputdate.length() == 10)
+    {
+        year = inputdate.substr(0, 4);
+        month = inputdate.substr(5, 2);
+        day = inputdate.substr(8, 2);
+
+        if (year < "2009" || year > "2022" || (year == "2022" && month > "03"))
+            return false;
+
+        int iYear = std::stoi(year);
+        int iMonth = std::stoi(month);
+        int iDay = std::stoi(day);
+
+        if (iMonth < 1 || iMonth > 12 || iDay < 1 || iDay > 31)
+            return false;
+
+        if (iDay == 31 && (iMonth == 4 || iMonth == 6 || iMonth == 9 || iMonth == 11))
+            return false;
+
+        if (iMonth == 2 && iDay > 28)
+        {
+            // Check for leap year
+            if ((iYear % 4 != 0) || (iYear % 100 == 0 && iYear % 400 != 0))
+                return false;
+        }
+
+        return true;
+    }
+    else
+    {
+        // std::cerr << "Error: bad input date format." << inputdate << std::endl;
+        return false;
+    }
+}
+
                            
 int	BitcoinExchange:: checkValue(std::string & value)
 {
@@ -107,6 +181,11 @@ void	BitcoinExchange:: parseinput(const std::string input)
 			while (getline(inputFile, inputLine))
 			{
 				std::string inputDate = inputLine.substr(0, 10);
+				if(checkDate(inputDate) == false)
+				{
+					std::cout << "Error: bad input => " << inputDate << std::endl;
+					continue;
+				}
 				std::string	value;
 				double	result;
 				if (inputLine.length() >= 11)
@@ -130,7 +209,7 @@ void	BitcoinExchange:: parseinput(const std::string input)
 								if(!valueStream.fail() && result >= 0 && result <= 1000)
 								{
 									result = result * (checkupperBound(inputDate));
-									std::cout<<"result: "<<result<<std::endl;
+									std::cout<<inputDate<<" => "<<value<<" = "<<result<<std::endl;
 								
 								}
 								else
@@ -149,14 +228,14 @@ void	BitcoinExchange:: parseinput(const std::string input)
 							}
 						}
 						else
-							std::cerr<<"Error: invalid value formatin line: "<<inputLine<<std::endl;
+							std::cerr<<"Error: invalid value format in line: "<<inputLine<<std::endl;
 					} 
 					else
-						std::cerr<<"Error: Separator | is not found"<<std::endl;
+						std::cerr<<"Error: Separator | is not found "<<inputLine<<std::endl;
 				}
 				if(value.empty())
 				{
-					std::cout<<"Error: Error: bad input => "<<inputLine<<std::endl;
+					std::cout<<"Error: bad input => there is no value to multiply "<<inputLine<<std::endl;
 					continue;
 				}
 			}	

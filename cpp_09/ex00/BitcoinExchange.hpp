@@ -23,9 +23,10 @@ class BitcoinExchange
 		BitcoinExchange(BitcoinExchange const & src);
 		BitcoinExchange& operator =(BitcoinExchange const & rhs);
 		~BitcoinExchange();
-		void parseinput(const std::string input);
-		void	printDataMap()const;
-		int		checkValue(std::string & value);
+		void		parseinput(const std::string input);
+		void		printDataMap()const;
+		bool		checkDate(const std::string &inputdate)const;
+		int			checkValue(std::string & value);
 		float		checkupperBound(const std::string & inputDate)const;
 		
 
