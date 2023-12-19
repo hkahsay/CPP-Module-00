@@ -8,6 +8,7 @@
 #include <string>
 #include <algorithm>
 #include<cstdlib>
+#include <cctype> 
 // #include<ifstream>
 #include<map>
 
@@ -24,7 +25,9 @@ class BitcoinExchange
 		~BitcoinExchange();
 		void parseinput(const std::string input);
 		void	printDataMap()const;
-		bool	check_input(std::string inputstrm);
+		int		checkValue(std::string & value);
+		float		checkupperBound(const std::string & inputDate)const;
+		
 
 
 
