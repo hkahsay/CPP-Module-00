@@ -7,11 +7,11 @@
 class RPN
 {
 	private:
-		RPN();
 		RPN(const RPN & src);
 		RPN & operator=(const RPN & rhs);
 
 	public:
+		RPN();
 		~RPN();
 		int	checkOperator(char ch);
 		int	checkOperand(char ch);
