@@ -22,36 +22,44 @@
         // int result = m.binarySearch(myVector, 9);
         // std::cout<<result<<std::endl;
 
-
-int main(int argc, char **argv) {
-    if (argc < 2) {
-        std::cout << "Usage: " << argv[0] << " <list of integers>" << std::endl;
-        return 1;
-    }
-    std::vector<int> vec;
-    // int num;
-    std::string inputstr;
 //     int c = 1;
 //     while(c < argc) {
 //         input.push_back(std::stoi(argv[c]));
 //         ++c;
 //     }
 
-//     std::cout << "Before sorting: " << to_string(input) << std::endl;
 //     std::vector<int> sorted = sort(input);
 //     std::cout << "After sorting: " << to_string(sorted) << std::endl;
 
 //     return 0;
-    for (int i = 1; i < argc; ++i) {
-        // num = std::atoi(argv[i]);
-        inputstr = argv[i];
-        // fillContainter(num, vec, inputstr);
-        
-        // PmergeMe m(input);
+
+int main(int argc, char** argv) {
+    if (argc < 2) {
+        std::cout << "Usage: " << argv[0] << " <list of integers>" << std::endl;
+        return 1;
     }
+
+    PmergeMe pm;
+    std::string inputStr;
+
+    for (int i = 1; i < argc; ++i) {
+        inputStr = argv[i];
+        fillContainer(pm, inputStr);
+    }
+
+    std::cout << "Before sorting: " << pm.to_string() << std::endl;
+     // Call the sort function and get the sorted vector
+    std::vector<int> sortedVec = pm.sort(pm.getVector());
+
+    // Print the sorted vector
+    std::cout << "After sorting: " << pm.to_string2(sortedVec) << std::endl;
+
+
 
     return 0;
 }
+
+        // PmergeMe m(input);
 
     // int arr[] = {5, 2, 9, 1, 5, 6};
     // int arr[] = {2, 5, 6, 7, 9, 11, 15, 16};

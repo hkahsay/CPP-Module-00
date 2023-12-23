@@ -15,21 +15,23 @@ PmergeMe:: PmergeMe(std::string input)
         std::cout << "Invalid input. Exiting." << std::endl;
 		return;
     }
-   
-    // std::cout<<"Before: ";
-    // printVector(_myvec);
-    // std::cout<<std::endl;
-    // std::cout<<"After: ";
-    // _myvec = sort(_myvec);
-    // printVector( _myvec);
-    // std::cout<<std::endl;
+    else
+    {
+        std::cout<<"Before: ";
+        printVector(_myvec);
+        // std::cout<<std::endl;
+        // std::cout<<"After: ";
+        // _myvec = sort(_myvec);
+        // printVector( _myvec);
+        // std::cout<<std::endl;
 
+    }
 
     // std::cout << "Before: ";
 
 }
 
-bool    PmergeMe:: isDigit(std::string & strInt)
+bool    PmergeMe:: isDigit(const std::string & strInt)
 {
     std::string::const_iterator   it;
     for ( it = strInt.begin(); it != strInt.end(); it++)
@@ -42,12 +44,22 @@ bool    PmergeMe:: isDigit(std::string & strInt)
 }
 
 
-bool PmergeMe::createVector(std::vector<int> inputVec)
+bool PmergeMe::createVector(std::string input)
 {
-   
+
+	std::istringstream iss(input);
+	std::string num_str;
 	int num;
 
+	while (iss >> num_str) {
 
+		if (!isDigit(num_str)) {
+			std:: cout << "Usage: a positive integer sequence as argument" << std::endl;
+			return false;
+		}
+		num = std::stoi(num_str);
+		_myvec.push_back( num );
+	}
 
 	if( _myvec.size() < 1 ) {
 
@@ -157,7 +169,7 @@ void PmergeMe::printVector(const std::vector<int>& vec)
     std::vector<int>::const_iterator ite = vec.end();
 
     for (it = vec.begin(); it != ite; it++) {
-        std::cout << " "<< *it;
+        std::cout << " "<<*it;
     }
     std::cout << std::endl;
 }

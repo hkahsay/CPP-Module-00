@@ -7,31 +7,13 @@ PmergeMe::PmergeMe()
 PmergeMe::~PmergeMe()
 {
 }
-
-PmergeMe:: PmergeMe(std::string input)
+std::vector<int> PmergeMe:: getVector()
 {
-    if(!createVector(input))
-    {
-        std::cout << "Invalid input. Exiting." << std::endl;
-		return;
-    }
-    else
-    {
-        std::cout<<"Before: ";
-        printVector(_myvec);
-        // std::cout<<std::endl;
-        // std::cout<<"After: ";
-        // _myvec = sort(_myvec);
-        // printVector( _myvec);
-        // std::cout<<std::endl;
-
-    }
-
-    // std::cout << "Before: ";
-
+    return this->_myvec;
 }
 
-bool    PmergeMe:: isDigit(const std::string & strInt)
+
+bool    PmergeMe:: isDigit(std::string & strInt)
 {
     std::string::const_iterator   it;
     for ( it = strInt.begin(); it != strInt.end(); it++)
@@ -44,60 +26,28 @@ bool    PmergeMe:: isDigit(const std::string & strInt)
 }
 
 
-bool PmergeMe::createVector(std::string input)
+bool PmergeMe::createVector(int num)
 {
-
-	std::istringstream iss(input);
-	std::string num_str;
-	int num;
-
-	while (iss >> num_str) {
-
-		if (!isDigit(num_str)) {
-			std:: cout << "Usage: a positive integer sequence as argument" << std::endl;
-			return false;
-		}
-		num = std::stoi(num_str);
-		_myvec.push_back( num );
-	}
-
-	if( _myvec.size() < 1 ) {
-
-		std::cout << "List is empty" << std::endl;
-		return false;
-	}
-
-	if( _myvec.size() == 1 ) {
-
-		if( num == 0 ) {
-			std::cout << "Usage: a positive integer sequence as argument" << std::endl;
-			return false;
-		}
-	}
-	return true;
+    _myvec.push_back(num);
+    return true; // You can add error handling if needed
 }
 
-std::string PmergeMe:: to_string(std::vector<int> input)
+std::string PmergeMe::to_string()
 {
     std::string result;
-    std::vector<int>::iterator  it;
-    std::vector<int>::iterator  ite = input.end();
-
-    for (it = input.begin(); it != ite; it++)
-    {
-        if (it != input.begin())
+    for (std::vector<int>::iterator it = _myvec.begin(); it != _myvec.end(); ++it) {
+        if (it != _myvec.begin())
             result += ", ";
         result += std::to_string(*it);
     }
-    return  result;
-    
+    return result;
 }
 
 int  PmergeMe::binarySearch(std::vector<int> input, int search)
 {
     size_t  lower = 0;
     size_t  higher = input.size();
-    while (lower <= higher)
+    while (lower < higher)
     {
         size_t  middle = lower + (higher - lower) / 2;
         if(input[middle] == search)
@@ -113,12 +63,17 @@ int  PmergeMe::binarySearch(std::vector<int> input, int search)
 }
 
 
+
 /*The expression i * 2 is used to calculate the 
 index of the first element in a pair, and (i * 2) + 1 
 is used to calculate 
-// the index of the second element in the pair.*/
+// the index of the second element in the pair.sorttttttttt*/
+
 std::vector<int> PmergeMe::sort(std::vector<int> input)
 {
+    if (input.size() <= 1) 
+        return input;
+
     if (input.size() == 1) return input;
     std::vector<int> smalls;//main-chain
     std::vector<int> bigs;
@@ -127,6 +82,7 @@ std::vector<int> PmergeMe::sort(std::vector<int> input)
     {
         int elm1 = input[i * 2];
         int elm2 = input[(i * 2) + 1];
+
         //we sort and store separatlyiin smalls and bigs
         if (elm1 > elm2)
         {
@@ -139,6 +95,7 @@ std::vector<int> PmergeMe::sort(std::vector<int> input)
             bigs.push_back(elm2);
         }
     }
+
     //if our input is odd we put the last unpaired in the bigs
     if (input.size()% 2 != 0)
     {
@@ -149,19 +106,20 @@ std::vector<int> PmergeMe::sort(std::vector<int> input)
     now lets sort bigs and smalls recursivly 
     and store each vector*/
     // Merge the sorted 'bigs' into the sorted 'smalls'.
-
+ 
     std::vector<int> main_chain = sort(smalls);
     std::vector<int> bigs_sorted = sort(bigs);
 
+    size_t index = 0;
     for (size_t i = 0; i < bigs_sorted.size(); ++i) {
         int el = bigs_sorted[i];
-        // Find the index _before_ which we should insert el into 'smalls'.
-        size_t pos = binarySearch(main_chain, el);
-        main_chain.insert(std::next(main_chain.begin(), pos), el);
+        while (index < main_chain.size() && el > main_chain[index]) {
+            index++;
+        }
+        main_chain.insert(std::next(main_chain.begin(), index), el);
     }
     return(main_chain);
 }
-
 
 void PmergeMe::printVector(const std::vector<int>& vec)
 {
@@ -169,7 +127,19 @@ void PmergeMe::printVector(const std::vector<int>& vec)
     std::vector<int>::const_iterator ite = vec.end();
 
     for (it = vec.begin(); it != ite; it++) {
-        std::cout << " "<<*it;
+        std::cout << " "<< *it;
     }
     std::cout << std::endl;
+}
+
+std::string PmergeMe::to_string2(std::vector<int> input)
+{
+    std::string result = "";
+    for (size_t i = 0; i < input.size(); ++i) {
+        if (i > 0) {
+            result += ", "; // Add a separator between numbers
+        }
+        result += std::to_string(input[i]); // Convert each integer to string and add it to the result
+    }
+    return result;
 }
