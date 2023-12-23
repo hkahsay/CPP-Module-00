@@ -23,12 +23,10 @@ class PmergeMe
         int binarySearch(std::vector<int> input, int search);
         std::string to_string();
         std::string to_string2(std::vector<int> input);
-
         std::vector<int> sort(std::vector<int> input);
         void printVector(const std::vector<int>& vec);
         std::vector<int> getVector();
         std::list<int> getList();
-
         
 };
 
