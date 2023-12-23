@@ -6,7 +6,7 @@
 #    By: mac <mac@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 11:24:52 by hkahsay           #+#    #+#              #
-#    Updated: 2023/12/21 17:19:08 by mac              ###   ########.fr        #
+#    Updated: 2023/12/22 12:06:44 by mac              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC = c++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 # Source files
-SRCS = test.cpp #PmergeMe.cpp
+SRCS = main.cpp PmergeMe.cpp
 
 # Object files 
 OBJS = $(SRCS:.cpp=.o)

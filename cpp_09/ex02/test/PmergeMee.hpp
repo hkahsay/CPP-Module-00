@@ -16,8 +16,8 @@ class PmergeMe
         PmergeMe(std::string input);
         PmergeMe();
         ~PmergeMe();
-        bool isDigit(const std::string& strInt);
-        bool createVector(std::string input);
+        bool isDigit(std::string& strInt);
+        bool createVector(std::vector<int> inputVec);
         int binarySearch(std::vector<int> input, int search);
         std::string to_string(std::vector<int> input);
         std::vector<int> sort(std::vector<int> input);
@@ -25,7 +25,17 @@ class PmergeMe
         
 };
 
-
+template<typename T>
+void    fillContainter(int num, T &container, std::string input)
+{
+    if (!isDigit(*input))
+    {
+        std:: cout << "Usage: a positive integer sequence as argument" << std::endl;
+        return;
+	}
+    num = std::stoi(input);
+    container.push_back(num);
+}
         
 
 

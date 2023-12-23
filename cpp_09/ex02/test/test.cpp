@@ -82,7 +82,7 @@ std::vector<int> sort(std::vector<int> input) {
     return main_chain;
 }
 
-int main(int argc, char** argv) {
+// int main(int argc, char** argv) {
     /*  
     int arr[] = {0,1,2,4,7,9};
     size_t arrSize = sizeof(arr) / sizeof(arr[0]);
@@ -97,16 +97,16 @@ int main(int argc, char** argv) {
     return 0;
     */
 
-    std::vector<int> input;
-    int c = 1;
-    while(c < argc) {
-        input.push_back(std::stoi(argv[c]));
-        ++c;
-    }
+//     std::vector<int> input;
+//     int c = 1;
+//     while(c < argc) {
+//         input.push_back(std::stoi(argv[c]));
+//         ++c;
+//     }
 
-    std::cout << "Before sorting: " << to_string(input) << std::endl;
-    std::vector<int> sorted = sort(input);
-    std::cout << "After sorting: " << to_string(sorted) << std::endl;
+//     std::cout << "Before sorting: " << to_string(input) << std::endl;
+//     std::vector<int> sorted = sort(input);
+//     std::cout << "After sorting: " << to_string(sorted) << std::endl;
 
-    return 0;
-}
+//     return 0;
+// }
