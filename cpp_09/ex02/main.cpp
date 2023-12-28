@@ -4,6 +4,14 @@
 #include<list>
 #include"PmergeMe.hpp"
 
+bool hasDoubleQuotes(const std::string& str) {
+    for (size_t i = 0; i < str.length(); ++i) {
+        if (str[i] == '"') {
+            return true;
+        }
+    }
+    return false;
+}
 
 int main(int argc, char** argv) {
     if (argc < 2) {
@@ -14,6 +22,12 @@ int main(int argc, char** argv) {
     std::string inputStr;
 
     for (int i = 1; i < argc; ++i) {
+        if(hasDoubleQuotes(argv[1]) && argv[2] == nullptr)
+        {
+            std::cout << "Error: input has only one element" << std::endl;
+            exit(EXIT_FAILURE);
+        }
+      
         inputStr = argv[i];
         //fill my input to its corrsponding container
         pm.fillContainer(pm.getVector(), inputStr);

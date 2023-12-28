@@ -25,6 +25,7 @@ class PmergeMe
         std::vector<int> sort_vector(std::vector<int> input);
         void printVector(const std::vector<int>& vec);
         std::vector<int> &getVector();
+   
 
         std::list<int> sort_list(std::list<int> input);
         std::list<int> &getList();
@@ -33,7 +34,6 @@ class PmergeMe
         void fillContainer(T& container, const std::string& input) {
             size_t start = 0;
             size_t end = input.find(' ');
-
             while (end != std::string::npos) {
                 std::string token = input.substr(start, end - start);
                 if (!token.empty()) {
@@ -45,14 +45,13 @@ class PmergeMe
                     
                     // Check for a positive integer before converting
                     if (token[0] == '-' || token[0] == '+' || std::stoi(token) <= 0) {
-                        std::cout << "Error: " << token << " is not a positive integer." << std::endl;
+                        std::cout << "Usage: " << " ' "<< token << " ' "<< " positive integer sequence as argument." << std::endl;
                         exit(EXIT_FAILURE);
                     }
                     int num = std::stoi(token);                   
                     container.push_back(num);
                     
                 }
-
                 start = end + 1;
                 end = input.find(' ', start);
             }
@@ -61,7 +60,7 @@ class PmergeMe
             std::string lastToken = input.substr(start);
             if (!lastToken.empty()) {
                 if (!PmergeMe::isDigit(lastToken)) {
-                    std::cerr << "Invalid input: " << lastToken << " is not a digit." << std::endl;
+                    std::cerr << "Usage: "<< " ' " << lastToken << " ' " << " positive integer sequence as argument." << std::endl;
                     // exit();
                     exit(EXIT_FAILURE);
                 }
@@ -71,7 +70,7 @@ class PmergeMe
                     if ((lastToken[0] == '-' && lastToken.size() > 1) ||
                         (lastToken[0] == '+' && lastToken.size() > 1) ||
                         (lastToken[0] != '-' && lastToken[0] != '+' && std::stoi(lastToken) <= 0)) {
-                        std::cout << "Error: " << lastToken << " is not a positive integer." << std::endl;
+                        std::cout << "Usage: " << " ' "<< lastToken << " ' "<< "  positive integer sequence as argument" << std::endl;
                         exit(EXIT_FAILURE);
                     }
 
